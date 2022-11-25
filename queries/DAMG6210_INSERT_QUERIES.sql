@@ -53,4 +53,32 @@ CREATE TABLE Territory.Unit (
     BuildingID INT FOREIGN KEY(BuildingID) REFERENCES Territory.Building(BuildingID)
 );
 
-SELECT * FROM Territory.Unit;
+----Siddhant-----
+
+CREATE SCHEMA Contract;
+
+CREATE TABLE Contract.Unit(
+  SerialNo int NOT NULL PRIMARY KEY,
+  ProductID int FOREIGN KEY REFERENCES Product.Product(ProductID),
+  IsActive bit,
+  BuildingID int FOREIGN KEY REFERENCES Territory.Building(BuildingID)
+
+);
+
+CREATE TABLE Contract.Sale(
+  SaleID int NOT NULL PRIMARY KEY,
+    SerialNo int FOREIGN KEY REFERENCES Contract.Unit(SerialNo),
+	SalesRepID int FOREIGN KEY REFERENCES Person.Employee(EmployeeId),
+	BillingCycle varchar(255),
+	Price money,
+	ContractDate date,
+	CustomerID int FOREIGN KEY REFERENCES Person.Customer(CustomerId),
+	Tenure numeric,
+	BillingMode varchar(255),
+   SalesTerritoryID int FOREIGN KEY REFERENCES Territory.Territory(TerritoryID)
+
+);
+
+---Foram---
+
+
