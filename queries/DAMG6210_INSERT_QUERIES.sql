@@ -79,22 +79,42 @@ CREATE TABLE Contract.Sale(
 
 );
 
-ALTER TABLE Contract.Sale
-DROP CONSTRAINT PK__Sale__1EE3C41F80723600;
+---Akshita--
 
-ALTER TABLE Contract.Sale
-ALTER COLUMN SaleID int NULL PRIMARY key;
 
-ALTER TABLE Contract.Sale
-ADD CONSTRAINT PK_saleId PRIMARY KEY NONCLUSTERED (SaleID);
+USE Team_Project10;
 
-ALTER TABLE Contract.Sale
-DROP COLUMN SalesTerritoryID;
+CREATE SCHEMA Callback; 
 
-ALTER TABLE Contract.Sale
- ADD CompanyID int
- FOREIGN KEY(CompanyID) REFERENCES Client.Company(CompanyID);
 
----Foram---
+CREATE TABLE Team_Project10.Callback.Callback
+(CallbackID INT,
+ RouteID INT,
+ MechanicID INT,
+ Status BIT,
+ CallbackDate DATE,
+ SerialNumber INT
+ PRIMARY KEY (CallbackID),
+ FOREIGN KEY (RouteID) REFERENCES Team_Project10.Territory.Route(RouteID) ,
+ FOREIGN KEY (MechanicID) REFERENCES Team_Project10.Person.Employee(EmployeeId),
+ FOREIGN KEY (SerialNumber) REFERENCES Team_Project10.Territory.Unit(SerialNumber)
+);
+
+
+
+
+CREATE TABLE Team_Project10.Callback.MaintenanceJobs
+(JobID INT,
+ EmployeeID INT,
+ RouteID INT,
+ VisitDate DATE,
+ JobStatus BIT,
+ SerialNumber INT
+ PRIMARY KEY (JobID),
+ FOREIGN KEY (RouteID) REFERENCES Team_Project10.Territory.Route(RouteID) ,
+ FOREIGN KEY (EmployeeID) REFERENCES Team_Project10.Person.Employee(EmployeeId),
+ FOREIGN KEY (SerialNumber) REFERENCES Team_Project10.Territory.Unit(SerialNumber)
+);
+
 
 
