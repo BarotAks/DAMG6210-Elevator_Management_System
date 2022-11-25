@@ -103,7 +103,7 @@ CREATE TABLE Callback.Callback
 
 
 
-CREATE TABLE Team_Project10.Callback.MaintenanceJobs
+CREATE TABLE Callback.MaintenanceJobs
 (JobID INT,
  EmployeeID INT,
  RouteID INT,
