@@ -87,7 +87,7 @@ USE Team_Project10;
 CREATE SCHEMA Callback; 
 
 
-CREATE TABLE Team_Project10.Callback.Callback
+CREATE TABLE Callback.Callback
 (CallbackID INT,
  RouteID INT,
  MechanicID INT,
@@ -95,9 +95,9 @@ CREATE TABLE Team_Project10.Callback.Callback
  CallbackDate DATE,
  SerialNumber INT
  PRIMARY KEY (CallbackID),
- FOREIGN KEY (RouteID) REFERENCES Team_Project10.Territory.Route(RouteID) ,
- FOREIGN KEY (MechanicID) REFERENCES Team_Project10.Person.Employee(EmployeeId),
- FOREIGN KEY (SerialNumber) REFERENCES Team_Project10.Territory.Unit(SerialNumber)
+ FOREIGN KEY (RouteID) REFERENCES Territory.Route(RouteID) ,
+ FOREIGN KEY (MechanicID) REFERENCES Person.Employee(EmployeeId),
+ FOREIGN KEY (SerialNumber) REFERENCES Territory.Unit(SerialNumber)
 );
 
 
@@ -111,9 +111,9 @@ CREATE TABLE Team_Project10.Callback.MaintenanceJobs
  JobStatus BIT,
  SerialNumber INT
  PRIMARY KEY (JobID),
- FOREIGN KEY (RouteID) REFERENCES Team_Project10.Territory.Route(RouteID) ,
- FOREIGN KEY (EmployeeID) REFERENCES Team_Project10.Person.Employee(EmployeeId),
- FOREIGN KEY (SerialNumber) REFERENCES Team_Project10.Territory.Unit(SerialNumber)
+ FOREIGN KEY (RouteID) REFERENCES Territory.Route(RouteID) ,
+ FOREIGN KEY (EmployeeID) REFERENCES Person.Employee(EmployeeId),
+ FOREIGN KEY (SerialNumber) REFERENCES Territory.Unit(SerialNumber)
 );
 
 
