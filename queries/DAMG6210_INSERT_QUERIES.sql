@@ -58,7 +58,7 @@ CREATE TABLE Territory.Unit (
 CREATE SCHEMA Contract;
 
 CREATE TABLE Contract.Unit(
-  SerialNo int NOT NULL PRIMARY KEY,
+  SerialNo int PRIMARY KEY,
   ProductID int FOREIGN KEY REFERENCES Product.Product(ProductID),
   IsActive bit,
   BuildingID int FOREIGN KEY REFERENCES Territory.Building(BuildingID)
@@ -66,7 +66,7 @@ CREATE TABLE Contract.Unit(
 );
 
 CREATE TABLE Contract.Sale(
-  SaleID int NOT NULL PRIMARY KEY,
+  SaleID int  PRIMARY KEY,
     SerialNo int FOREIGN KEY REFERENCES Contract.Unit(SerialNo),
 	SalesRepID int FOREIGN KEY REFERENCES Person.Employee(EmployeeId),
 	BillingCycle varchar(255),
