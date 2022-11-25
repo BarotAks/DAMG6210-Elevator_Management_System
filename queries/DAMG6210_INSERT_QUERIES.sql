@@ -79,6 +79,44 @@ CREATE TABLE Contract.Sale(
 
 );
 
----Foram---
+---Akshita--
+
+
+USE Team_Project10;
+
+CREATE SCHEMA Callback; 
+
+
+CREATE TABLE Team_Project10.Callback.Callback
+(CallbackID INT,
+ RouteID INT,
+ MechanicID INT,
+ Status BIT,
+ CallbackDate DATE,
+ SerialNumber INT
+ PRIMARY KEY (CallbackID),
+ FOREIGN KEY (RouteID) REFERENCES Team_Project10.Territory.Route(RouteID) ,
+ FOREIGN KEY (MechanicID) REFERENCES Team_Project10.Person.Employee(EmployeeId),
+ FOREIGN KEY (SerialNumber) REFERENCES Team_Project10.Territory.Unit(SerialNumber)
+);
+
+
+
+
+CREATE TABLE Team_Project10.Callback.MaintenanceJobs
+(JobID INT,
+ EmployeeID INT,
+ RouteID INT,
+ VisitDate DATE,
+ JobStatus BIT,
+ SerialNumber INT
+ PRIMARY KEY (JobID),
+ FOREIGN KEY (RouteID) REFERENCES Team_Project10.Territory.Route(RouteID) ,
+ FOREIGN KEY (EmployeeID) REFERENCES Team_Project10.Person.Employee(EmployeeId),
+ FOREIGN KEY (SerialNumber) REFERENCES Team_Project10.Territory.Unit(SerialNumber)
+);
+
+
+
 
 
