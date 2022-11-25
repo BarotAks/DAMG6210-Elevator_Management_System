@@ -79,6 +79,22 @@ CREATE TABLE Contract.Sale(
 
 );
 
+ALTER TABLE Contract.Sale
+DROP CONSTRAINT PK__Sale__1EE3C41F80723600;
+
+ALTER TABLE Contract.Sale
+ALTER COLUMN SaleID int NULL PRIMARY key;
+
+ALTER TABLE Contract.Sale
+ADD CONSTRAINT PK_saleId PRIMARY KEY NONCLUSTERED (SaleID);
+
+ALTER TABLE Contract.Sale
+DROP COLUMN SalesTerritoryID;
+
+ALTER TABLE Contract.Sale
+ ADD CompanyID int
+ FOREIGN KEY(CompanyID) REFERENCES Client.Company(CompanyID);
+
 ---Foram---
 
 
