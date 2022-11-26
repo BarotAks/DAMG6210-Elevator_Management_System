@@ -101,8 +101,6 @@ CREATE TABLE Callback.Callback
 );
 
 
-
-
 CREATE TABLE Callback.MaintenanceJobs
 (JobID INT,
  EmployeeID INT,
@@ -117,4 +115,50 @@ CREATE TABLE Callback.MaintenanceJobs
 );
 
 
+-----Kinjal------
 
+USE Team_Project10;
+
+-- Script for creating Person schema
+GO
+CREATE SCHEMA Person
+GO
+
+CREATE TABLE Person.Person (
+    PersonId INT PRIMARY KEY,
+    FirstName VARCHAR(200),
+    LastName VARCHAR(200),
+    PhoneNumber INT,
+    EmailAddress VARCHAR(200),
+    Gender VARCHAR(200)
+);
+
+CREATE TABLE Person.Employee (
+    EmployeeId INT PRIMARY KEY,
+    CompanyId INT ,
+    RoleId INT ,
+    JoiningDate DATE,
+    LastDate DATE
+);
+
+-- ALTER TABLE Person.Employee 
+-- add  constraint RoleId FOREIGN KEY(RoleId) REFERENCES Person.Role(RoleId);
+
+-- ALTER TABLE Person.Employee 
+-- add  constraint CompanyID FOREIGN KEY(CompanyID) REFERENCES Client.Company(CompanyID);
+
+CREATE TABLE Person.Role (
+    RoleId INT PRIMARY KEY,
+    Position VARCHAR(200)
+);
+
+CREATE TABLE Person.Customer(
+    CustomerId INT PRIMARY KEY,
+    CompanyId INT
+);
+
+CREATE TABLE Person.UserDetails (
+    LoginId VARCHAR(200),
+    EncryptedPassword VARBINARY(250),
+    PersonId INT FOREIGN KEY(PersonId) REFERENCES Person.Person(PersonId)
+);
