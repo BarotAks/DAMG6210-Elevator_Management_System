@@ -101,8 +101,6 @@ CREATE TABLE Callback.Callback
 );
 
 
-
-
 CREATE TABLE Callback.MaintenanceJobs
 (JobID INT,
  EmployeeID INT,
@@ -117,4 +115,113 @@ CREATE TABLE Callback.MaintenanceJobs
 );
 
 
+-----Kinjal------
 
+USE Team_Project10;
+
+-- Script for creating Person schema
+GO
+CREATE SCHEMA Person
+GO
+
+CREATE TABLE Person.Person (
+    PersonId INT PRIMARY KEY,
+    FirstName VARCHAR(200),
+    LastName VARCHAR(200),
+    PhoneNumber INT,
+    EmailAddress VARCHAR(200),
+    Gender VARCHAR(200)
+);
+
+Select * from Person.Person;
+
+CREATE TABLE Person.Employee (
+    EmployeeId INT PRIMARY KEY,
+    CompanyId INT ,
+    RoleId INT ,
+    JoiningDate DATE,
+    LastDate DATE
+);
+
+ALTER TABLE Person.Employee 
+add  constraint RoleId FOREIGN KEY(RoleId) REFERENCES Person.Role(RoleId);
+
+ALTER TABLE Person.Employee 
+add  constraint CompanyID FOREIGN KEY(CompanyID) REFERENCES Client.Company(CompanyID);
+
+Select * from Person.Employee;
+
+CREATE TABLE Person.Role (
+    RoleId INT PRIMARY KEY,
+    Position VARCHAR(200)
+);
+
+Select * from Person.Role;
+
+CREATE TABLE Person.Customer(
+    CustomerId INT PRIMARY KEY,
+    CompanyId INT
+);
+
+Select * from Person.Customer;
+
+CREATE TABLE Person.UserDetails (
+    LoginId VARCHAR(200),
+    EncryptedPassword VARBINARY(250),
+    PersonId INT FOREIGN KEY(PersonId) REFERENCES Person.Person(PersonId)
+);
+
+----- Encrypt Passsword -----
+
+-- Create DMK
+CREATE MASTER KEY
+ENCRYPTION BY PASSWORD = 'Team10_P@sswOrd';
+
+-- Create certificate to protect symmetric key
+CREATE CERTIFICATE PasswordCertificate
+WITH SUBJECT = 'Password Test Certificate',
+EXPIRY_DATE = '2026-10-31';
+
+-- DROP CERTIFICATE TestCertificate;
+
+-- Create symmetric key to encrypt data
+CREATE SYMMETRIC KEY PasswordSymmetricKey
+WITH ALGORITHM = AES_128
+ENCRYPTION BY CERTIFICATE PasswordCertificate;
+
+-- Open symmetric key
+OPEN SYMMETRIC KEY PasswordSymmetricKey
+DECRYPTION BY CERTIFICATE PasswordCertificate;
+
+--Testing purpose for future reference
+-- Start
+-- INSERT
+-- INTO Person.UserDetails
+-- (
+-- LoginId,
+-- EncryptedPassword 
+-- )
+-- VALUES
+-- ('User 1' , EncryptByKey(Key_GUID(N'PasswordSymmetricKey'), convert(varbinary, 
+-- 'PassTS1')));
+
+-- Select * from Person.UserDetails;
+
+-- -- Use DecryptByKey to decrypt the encrypted data and see what we have in the table
+-- select LoginId, DecryptByKey(EncryptedPassword)
+-- from Person.UserDetails;
+
+
+-- -- Use DecryptByKey to decrypt the encrypted data and see what we have in the table
+-- -- DecryptByKey returns VARBINARY with a maximum size of 8,000 bytes
+-- -- Also use CONVERT to convert the decrypted data to VARCHAR so that we can see the
+-- -- plain passwords
+-- select LoginId, convert(varchar, DecryptByKey(EncryptedPassword))
+-- from Person.UserDetails;
+
+
+-- DECLARE @command varchar(1000)
+-- SELECT @command = 'SELECT * FROM sys.symmetric_keys'
+-- EXEC sp_MSforeachdb @command
+
+-- End
