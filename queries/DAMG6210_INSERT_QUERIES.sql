@@ -54,19 +54,19 @@ CREATE TABLE Territory.Unit (
 );
 
 ----Siddhant-----
-
-CREATE SCHEMA Contract;
+Go
+CREATE SCHEMA Contract
+Go
 
 CREATE TABLE Contract.Unit(
   SerialNo int PRIMARY KEY,
   ProductID int FOREIGN KEY REFERENCES Product.Product(ProductID),
   IsActive bit,
   BuildingID int FOREIGN KEY REFERENCES Territory.Building(BuildingID)
-
 );
 
 CREATE TABLE Contract.Sale(
-  SaleID int  PRIMARY KEY,
+	SaleID int  PRIMARY KEY,
     SerialNo int FOREIGN KEY REFERENCES Contract.Unit(SerialNo),
 	SalesRepID int FOREIGN KEY REFERENCES Person.Employee(EmployeeId),
 	BillingCycle varchar(255),
@@ -75,17 +75,14 @@ CREATE TABLE Contract.Sale(
 	CustomerID int FOREIGN KEY REFERENCES Person.Customer(CustomerId),
 	Tenure numeric,
 	BillingMode varchar(255),
-   SalesTerritoryID int FOREIGN KEY REFERENCES Territory.Territory(TerritoryID)
-
+	SalesTerritoryID int FOREIGN KEY REFERENCES Territory.Territory(TerritoryID)
 );
 
 ---Akshita--
 
-
-USE Team_Project10;
-
-CREATE SCHEMA Callback; 
-
+Go
+CREATE SCHEMA Callback
+Go
 
 CREATE TABLE Callback.Callback
 (CallbackID INT,
@@ -100,9 +97,6 @@ CREATE TABLE Callback.Callback
  FOREIGN KEY (SerialNumber) REFERENCES Territory.Unit(SerialNumber)
 );
 
-
-
-
 CREATE TABLE Callback.MaintenanceJobs
 (JobID INT,
  EmployeeID INT,
@@ -116,5 +110,23 @@ CREATE TABLE Callback.MaintenanceJobs
  FOREIGN KEY (SerialNumber) REFERENCES Territory.Unit(SerialNumber)
 );
 
+---Forum--
 
+Go
+CREATE SCHEMA Client
+GO
+
+CREATE TABLE Client.Organization (
+    OrganizationID INT NOT NULL PRIMARY KEY,
+    OrganizationName VARCHAR(200),
+    OrganizationCountryCode INT FOREIGN KEY REFERENCES territory.country(CountryCode),
+    OrganizationSSN INT
+);
+
+CREATE TABLE Client.Company (
+    CompanyID INT NOT NULL PRIMARY KEY,
+    OrganizationID INT FOREIGN KEY REFERENCES Client.Organization(OrganizationID),
+    RegionID INT FOREIGN KEY REFERENCES Territory.Region(RegionID) ,
+    CompanyName VARCHAR(200)
+);
 
