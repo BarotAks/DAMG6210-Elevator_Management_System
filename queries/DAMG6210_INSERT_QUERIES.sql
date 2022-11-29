@@ -46,27 +46,20 @@ CREATE TABLE Territory.Product (
     IsCommercial BIT
 );
 
-CREATE TABLE Territory.Unit (
-    SerialNumber INT PRIMARY KEY,
-    IsActive BIT,
-    ProductID INT FOREIGN KEY(ProductID) REFERENCES Territory.Product(ProductID),
-    BuildingID INT FOREIGN KEY(BuildingID) REFERENCES Territory.Building(BuildingID)
-);
-
 ----Siddhant-----
-
-CREATE SCHEMA Contract;
+Go
+CREATE SCHEMA Contract
+Go
 
 CREATE TABLE Contract.Unit(
   SerialNo int PRIMARY KEY,
   ProductID int FOREIGN KEY REFERENCES Product.Product(ProductID),
   IsActive bit,
   BuildingID int FOREIGN KEY REFERENCES Territory.Building(BuildingID)
-
 );
 
 CREATE TABLE Contract.Sale(
-  SaleID int  PRIMARY KEY,
+	SaleID int  PRIMARY KEY,
     SerialNo int FOREIGN KEY REFERENCES Contract.Unit(SerialNo),
 	SalesRepID int FOREIGN KEY REFERENCES Person.Employee(EmployeeId),
 	BillingCycle varchar(255),
@@ -75,17 +68,14 @@ CREATE TABLE Contract.Sale(
 	CustomerID int FOREIGN KEY REFERENCES Person.Customer(CustomerId),
 	Tenure numeric,
 	BillingMode varchar(255),
-   SalesTerritoryID int FOREIGN KEY REFERENCES Territory.Territory(TerritoryID)
-
+	SalesTerritoryID int FOREIGN KEY REFERENCES Territory.Territory(TerritoryID)
 );
 
 ---Akshita--
 
-
-USE Team_Project10;
-
-CREATE SCHEMA Callback; 
-
+Go
+CREATE SCHEMA Callback
+Go
 
 CREATE TABLE Callback.Callback
 (CallbackID INT,
@@ -100,7 +90,6 @@ CREATE TABLE Callback.Callback
  FOREIGN KEY (SerialNumber) REFERENCES Territory.Unit(SerialNumber)
 );
 
-
 CREATE TABLE Callback.MaintenanceJobs
 (JobID INT,
  EmployeeID INT,
@@ -113,7 +102,6 @@ CREATE TABLE Callback.MaintenanceJobs
  FOREIGN KEY (EmployeeID) REFERENCES Person.Employee(EmployeeId),
  FOREIGN KEY (SerialNumber) REFERENCES Territory.Unit(SerialNumber)
 );
-
 
 -----Kinjal------
 
@@ -141,12 +129,6 @@ CREATE TABLE Person.Employee (
     LastDate DATE
 );
 
--- ALTER TABLE Person.Employee 
--- add  constraint RoleId FOREIGN KEY(RoleId) REFERENCES Person.Role(RoleId);
-
--- ALTER TABLE Person.Employee 
--- add  constraint CompanyID FOREIGN KEY(CompanyID) REFERENCES Client.Company(CompanyID);
-
 CREATE TABLE Person.Role (
     RoleId INT PRIMARY KEY,
     Position VARCHAR(200)
@@ -162,3 +144,24 @@ CREATE TABLE Person.UserDetails (
     EncryptedPassword VARBINARY(250),
     PersonId INT FOREIGN KEY(PersonId) REFERENCES Person.Person(PersonId)
 );
+
+---Forum--
+
+Go
+CREATE SCHEMA Client
+GO
+
+CREATE TABLE Client.Organization (
+    OrganizationID INT NOT NULL PRIMARY KEY,
+    OrganizationName VARCHAR(200),
+    OrganizationCountryCode INT FOREIGN KEY REFERENCES territory.country(CountryCode),
+    OrganizationSSN INT
+);
+
+CREATE TABLE Client.Company (
+    CompanyID INT NOT NULL PRIMARY KEY,
+    OrganizationID INT FOREIGN KEY REFERENCES Client.Organization(OrganizationID),
+    RegionID INT FOREIGN KEY REFERENCES Territory.Region(RegionID) ,
+    CompanyName VARCHAR(200)
+);
+
