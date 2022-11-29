@@ -10,12 +10,14 @@ CREATE CERTIFICATE PasswordCertificate
 WITH SUBJECT = 'Password Test Certificate',
 EXPIRY_DATE = '2026-10-31';
 
--- DROP CERTIFICATE TestCertificate;
+-- DROP CERTIFICATE PasswordCertificate;
 
 -- Create symmetric key to encrypt data
 CREATE SYMMETRIC KEY PasswordSymmetricKey
 WITH ALGORITHM = AES_128
 ENCRYPTION BY CERTIFICATE PasswordCertificate;
+
+-- DROP SYMMETRIC KEY PasswordSymmetricKey;
 
 -- Open symmetric key
 OPEN SYMMETRIC KEY PasswordSymmetricKey
@@ -24,16 +26,18 @@ DECRYPTION BY CERTIFICATE PasswordCertificate;
 
 --Testing purpose for future reference
 -- Start
--- INSERT
--- INTO Person.UserDetails
--- (
--- LoginId,
--- EncryptedPassword 
--- )
--- VALUES
--- ('User 1' , EncryptByKey(Key_GUID(N'PasswordSymmetricKey'), convert(varbinary, 
--- 'PassTS1')));
+INSERT
+INTO Person.UserDetails
+(
+LoginId,
+EncryptedPassword,
+PersonId 
+)
+VALUES
+('User 1' , EncryptByKey(Key_GUID(N'PasswordSymmetricKey'), convert(varbinary, 
+'PassTS1')),1);
 
+SELECT * FROM Person.UserDetails;
 -- Select * from Person.UserDetails;
 
 -- -- Use DecryptByKey to decrypt the encrypted data and see what we have in the table
