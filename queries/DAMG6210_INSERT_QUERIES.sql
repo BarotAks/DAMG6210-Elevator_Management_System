@@ -46,13 +46,6 @@ CREATE TABLE Territory.Product (
     IsCommercial BIT
 );
 
-CREATE TABLE Territory.Unit (
-    SerialNumber INT PRIMARY KEY,
-    IsActive BIT,
-    ProductID INT FOREIGN KEY(ProductID) REFERENCES Territory.Product(ProductID),
-    BuildingID INT FOREIGN KEY(BuildingID) REFERENCES Territory.Building(BuildingID)
-);
-
 ----Siddhant-----
 Go
 CREATE SCHEMA Contract
@@ -97,10 +90,6 @@ CREATE TABLE Callback.Callback
  FOREIGN KEY (SerialNumber) REFERENCES Territory.Unit(SerialNumber)
 );
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 70af8fa9921a0fd6ef5a82c08be59cd1866042cb
 CREATE TABLE Callback.MaintenanceJobs
 (JobID INT,
  EmployeeID INT,
@@ -114,27 +103,6 @@ CREATE TABLE Callback.MaintenanceJobs
  FOREIGN KEY (SerialNumber) REFERENCES Territory.Unit(SerialNumber)
 );
 
----Forum--
-
-Go
-CREATE SCHEMA Client
-GO
-
-<<<<<<< HEAD
-CREATE TABLE Client.Organization (
-    OrganizationID INT NOT NULL PRIMARY KEY,
-    OrganizationName VARCHAR(200),
-    OrganizationCountryCode INT FOREIGN KEY REFERENCES territory.country(CountryCode),
-    OrganizationSSN INT
-);
-
-CREATE TABLE Client.Company (
-    CompanyID INT NOT NULL PRIMARY KEY,
-    OrganizationID INT FOREIGN KEY REFERENCES Client.Organization(OrganizationID),
-    RegionID INT FOREIGN KEY REFERENCES Territory.Region(RegionID) ,
-    CompanyName VARCHAR(200)
-);
-=======
 -----Kinjal------
 
 USE Team_Project10;
@@ -161,13 +129,6 @@ CREATE TABLE Person.Employee (
     LastDate DATE
 );
 
--- ALTER TABLE Person.Employee 
--- add  constraint RoleId FOREIGN KEY(RoleId) REFERENCES Person.Role(RoleId);
->>>>>>> 70af8fa9921a0fd6ef5a82c08be59cd1866042cb
-
--- ALTER TABLE Person.Employee 
--- add  constraint CompanyID FOREIGN KEY(CompanyID) REFERENCES Client.Company(CompanyID);
-
 CREATE TABLE Person.Role (
     RoleId INT PRIMARY KEY,
     Position VARCHAR(200)
@@ -183,3 +144,24 @@ CREATE TABLE Person.UserDetails (
     EncryptedPassword VARBINARY(250),
     PersonId INT FOREIGN KEY(PersonId) REFERENCES Person.Person(PersonId)
 );
+
+---Forum--
+
+Go
+CREATE SCHEMA Client
+GO
+
+CREATE TABLE Client.Organization (
+    OrganizationID INT NOT NULL PRIMARY KEY,
+    OrganizationName VARCHAR(200),
+    OrganizationCountryCode INT FOREIGN KEY REFERENCES territory.country(CountryCode),
+    OrganizationSSN INT
+);
+
+CREATE TABLE Client.Company (
+    CompanyID INT NOT NULL PRIMARY KEY,
+    OrganizationID INT FOREIGN KEY REFERENCES Client.Organization(OrganizationID),
+    RegionID INT FOREIGN KEY REFERENCES Territory.Region(RegionID) ,
+    CompanyName VARCHAR(200)
+);
+
