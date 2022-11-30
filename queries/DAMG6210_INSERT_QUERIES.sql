@@ -1,4 +1,4 @@
-------------------------- Region ---------------------------
+------------------------- Country ---------------------------
 INSERT INTO Territory.Country (CountryName) VALUES ('United States');
 INSERT INTO Territory.Country (CountryName) VALUES ('United Kingdom'); 
 

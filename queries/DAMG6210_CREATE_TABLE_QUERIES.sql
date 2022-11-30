@@ -159,9 +159,9 @@ CREATE TABLE Callback.Callback
 (CallbackID INT,
  RouteID INT,
  MechanicID INT,
- StatusID INT FOREIGN KEY REFERENCES Contract.Unit(SerialNo),
+ StatusID INT FOREIGN KEY REFERENCES Callback.Status(StatusID),
  CallbackDate DATE,
- SerialNumber INT
+ SerialNumber INT 
  PRIMARY KEY (CallbackID),
  FOREIGN KEY (RouteID) REFERENCES Territory.Route(RouteID) ,
  FOREIGN KEY (MechanicID) REFERENCES Person.Employee(EmployeeId),
