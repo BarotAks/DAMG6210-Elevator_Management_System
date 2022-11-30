@@ -2,12 +2,12 @@ DROP TABLE Callback.Callback
 DROP TABLE Callback.Status
 DROP TABLE Callback.MaintenanceJobs
 DROP TABLE Person.UserDetails
-DROP TABLE Person.Role
-DROP TABLE Person.Gender
+DROP TABLE Contract.Sale
 DROP TABLE Person.Customer
 DROP TABLE Person.Employee
 DROP TABLE Person.Person
-DROP TABLE Contract.Sale
+DROP TABLE Person.Role
+DROP TABLE Person.Gender
 DROP TABLE Contract.Unit
 DROP TABLE Product.Product
 DROP TABLE Product.ProductType
