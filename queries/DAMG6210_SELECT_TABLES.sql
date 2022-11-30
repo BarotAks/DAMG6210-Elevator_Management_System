@@ -1,23 +1,23 @@
-DROP TABLE Callback.Callback
-DROP TABLE Callback.Status
-DROP TABLE Callback.MaintenanceJobs
-DROP TABLE Person.UserDetails
-DROP TABLE Contract.Sale
-DROP TABLE Person.Customer
-DROP TABLE Person.Employee
-DROP TABLE Person.Person
-DROP TABLE Person.Role
-DROP TABLE Person.Gender
-DROP TABLE Contract.Unit
-DROP TABLE Product.Product
-DROP TABLE Product.ProductType
-DROP TABLE Territory.Building
-DROP TABLE Client.Company
-DROP TABLE Client.Organization
-DROP TABLE Territory.Route
-DROP TABLE Territory.Territory
-DROP TABLE Territory.Region
-DROP TABLE Territory.Country
+-- SELECT * FROM Callback.Callback
+-- SELECT * FROM Callback.Status
+-- SELECT * FROM Callback.MaintenanceJobs
+SELECT * FROM Person.UserDetails
+-- SELECT * FROM Contract.Sale
+SELECT * FROM Person.Customer
+SELECT * FROM Person.Employee
+SELECT * FROM Person.Person
+-- SELECT * FROM Person.Role
+-- SELECT * FROM Person.Gender
+-- SELECT * FROM Contract.Unit
+-- SELECT * FROM Product.Product
+-- SELECT * FROM Product.ProductType
+-- SELECT * FROM Territory.Building
+-- SELECT * FROM Client.Company
+-- SELECT * FROM Client.Organization
+-- SELECT * FROM Territory.Route
+-- SELECT * FROM Territory.Territory
+-- SELECT * FROM Territory.Region
+-- SELECT * FROM Territory.Country
 
 
 
