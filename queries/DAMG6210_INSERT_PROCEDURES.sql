@@ -22,4 +22,22 @@ GO
 --     @BuildingID=1
 -- GO
 
+-------------------------- PROCEDURE: InsertRoleDetails ------------------------
+
+
+GO
+CREATE OR ALTER PROCEDURE InsertRoleDetails @Position VARCHAR(200)
+AS
+SET NOCOUNT ON
+INSERT INTO [Person].[Role]
+           ([Position])
+     VALUES
+           (@Position)
+GO
+
+-- Test
+-- EXECUTE InsertRoleDetails
+--     @Position='Area Manager'   
+-- GO
+
 ---------------------------------------------------------------------------------------

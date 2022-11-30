@@ -64,3 +64,37 @@ INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,Organi
 
 ------------------------- Company ---------------------------
 INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (1,1,'Otis Northeast');
+
+------------------------- Company ---------------------------
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (1,1,'Otis Northeast');
+
+
+------------------------- Client.Organization ---------------------------
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS US',1,'999-999-9999');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS US',2,'129-678-9999');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS US',2,'159-678-9699');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS US',1,'129-678-9499');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS US',2,'349-678-9299');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS US',1,'149-678-9199');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS US',1,'134-678-9199');
+
+
+------------------------- Client.Company ---------------------------
+
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (1,1,'Otis Northwest');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (2,2,'Otis Southeast');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (13,3,'Otis Northeast');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (14,2,'Otis Northwest');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (14,1,'Otis Northwest');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (2,1,'Otis Southwest');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (13,1,'Otis Southwest');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (15,17,'Otis Southwest');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (15,3,'Brazil');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (13,3,'China');
+
+
+------------------------- Client.Role ---------------------------
+INSERT INTO Person.Role (Position) VALUES ('Mechanic');
+INSERT INTO Person.Role (Position) VALUES ('Supervisor');
+INSERT INTO Person.Role (Position) VALUES ('Branch Manager');
+INSERT INTO Person.Role (Position) VALUES ('Sales Represetative');
