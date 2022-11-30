@@ -198,7 +198,8 @@ CREATE TABLE Person.Customer(
 
 CREATE TABLE Person.UserDetails (
     LoginId VARCHAR(200) PRIMARY KEY,
-    EncryptedPassword VARBINARY(250)
+    EncryptedPassword VARBINARY(250),
+    PersonID INT FOREIGN KEY REFERENCES Person.Person(PersonID)
 );
 -------------------------------------------------------------------------------------
 
