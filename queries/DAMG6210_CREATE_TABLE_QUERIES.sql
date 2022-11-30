@@ -2,9 +2,9 @@ USE Team_Project10;
 
 ------------ SCHEMA: Territory ------------
 
-GO
-CREATE SCHEMA Territory
-GO
+-- GO
+-- CREATE SCHEMA Territory
+-- GO
 
 -------------------------------------------
 
@@ -65,11 +65,43 @@ CREATE TABLE Territory.Building (
 
 -------------------------------------------------------------------------------------
 
+------------- Schema: Client -------------
+
+-- Go
+-- CREATE SCHEMA Client
+-- GO
+
+-------------------------------------------
+
+
+-------------------------------- TABLE: Organization ---------------------------------
+
+CREATE TABLE Client.Organization (
+    OrganizationID INT IDENTITY(1,1) PRIMARY KEY,
+    OrganizationName VARCHAR(200) NOT NULL,
+    OrganizationCountryCode INT FOREIGN KEY REFERENCES territory.country(CountryCode),
+    OrganizationSSN VARCHAR(12) NOT NULL
+);
+
+-------------------------------------------------------------------------------------
+
+
+-------------------------------- TABLE: China ---------------------------------
+
+CREATE TABLE Client.Company (
+    CompanyID INT IDENTITY(1,1) PRIMARY KEY,
+    OrganizationID INT FOREIGN KEY REFERENCES Client.Organization(OrganizationID),
+    RegionID INT FOREIGN KEY REFERENCES Territory.Region(RegionID) ,
+    CompanyName VARCHAR(200)
+);
+
+-------------------------------------------------------------------------------------
+
 ------------- Schema: Product -------------
 
-GO 
-CREATE SCHEMA Product
-GO
+-- GO 
+-- CREATE SCHEMA Product
+-- GO
 
 -------------------------------------------
 
@@ -97,11 +129,84 @@ CREATE TABLE Product.Product (
 
 -------------------------------------------------------------------------------------
 
+------------- Schema: Person -------------
+
+-- GO
+-- CREATE SCHEMA Person
+-- GO
+
+-------------------------------------------
+
+
+-------------------------------- TABLE: Gender ------------------------------
+
+CREATE TABLE Person.Gender(
+    GenderID INT IDENTITY(1,1) PRIMARY KEY,
+    Gender VARCHAR(10)
+)
+
+-------------------------------------------------------------------------------------
+
+-------------------------------- TABLE: Person ---------------------------------
+
+CREATE TABLE Person.Person (
+    PersonId INT IDENTITY(1,1) PRIMARY KEY,
+    FirstName VARCHAR(200) NOT NULL,
+    LastName VARCHAR(200) NOT NULL,
+    PhoneNumber CHAR(12), -- you might not want to have such a precise length
+    CONSTRAINT chk_phone CHECK (PhoneNumber NOT LIKE '%[^0-9+-.]%'),
+    DateofBirth Date,
+    AGE AS DATEDIFF(hour,DateOfBirth,GETDATE())/8766,
+    EmailAddress VARCHAR(200),
+    GenderID INT FOREIGN KEY REFERENCES Person.Gender(GenderID)
+);
+
+-------------------------------------------------------------------------------------
+
+-------------------------------- TABLE: Role ---------------------------------
+
+CREATE TABLE Person.Role (
+    RoleId INT IDENTITY(1,1) PRIMARY KEY,
+    Position VARCHAR(200)
+);
+
+-------------------------------------------------------------------------------------
+
+-------------------------------- TABLE: Employee ---------------------------------
+
+CREATE TABLE Person.Employee (
+    EmployeeId INT IDENTITY(1,1) PRIMARY KEY,
+    CompanyId INT FOREIGN KEY REFERENCES Client.Company(CompanyID),
+    RoleId INT FOREIGN KEY REFERENCES Person.Role(RoleId),
+    JoiningDate DATE,
+    LastDate DATE
+);
+
+-------------------------------------------------------------------------------------
+
+
+-------------------------------- TABLE: Customer ---------------------------------
+
+CREATE TABLE Person.Customer(
+    CustomerId INT IDENTITY(1,1) PRIMARY KEY,
+    CompanyId INT FOREIGN KEY REFERENCES Client.Company(CompanyID)
+);
+
+-------------------------------------------------------------------------------------
+
+-------------------------------- TABLE: UserDetails ---------------------------------
+
+CREATE TABLE Person.UserDetails (
+    LoginId VARCHAR(200) PRIMARY KEY,
+    EncryptedPassword VARBINARY(250)
+);
+-------------------------------------------------------------------------------------
+
 ------------- Schema: Contract -------------
 
-Go
-CREATE SCHEMA Contract
-Go
+-- Go
+-- CREATE SCHEMA Contract
+-- Go
 
 -------------------------------------------
 
@@ -135,12 +240,11 @@ CREATE TABLE Contract.Sale(
 
 ------------- Schema: Contract -------------
 
-Go
-CREATE SCHEMA Callback
-Go
+-- Go
+-- CREATE SCHEMA Callback
+-- Go
 
 -------------------------------------------
-
 
 -------------------------------- TABLE: Status ------------------------------------
 
@@ -159,9 +263,9 @@ CREATE TABLE Callback.Callback
 (CallbackID INT,
  RouteID INT,
  MechanicID INT,
- StatusID INT FOREIGN KEY REFERENCES Contract.Unit(SerialNo),
+ StatusID INT FOREIGN KEY REFERENCES Callback.Status(StatusID),
  CallbackDate DATE,
- SerialNumber INT
+ SerialNumber INT 
  PRIMARY KEY (CallbackID),
  FOREIGN KEY (RouteID) REFERENCES Territory.Route(RouteID) ,
  FOREIGN KEY (MechanicID) REFERENCES Person.Employee(EmployeeId),
@@ -187,108 +291,4 @@ CREATE TABLE Callback.MaintenanceJobs
 
 -------------------------------------------------------------------------------------
 
-------------- Schema: Person -------------
 
-GO
-CREATE SCHEMA Person
-GO
-
--------------------------------------------
-
-
--------------------------------- TABLE: Gender ------------------------------
-
-CREATE TABLE Person.Gender(
-    GenderID INT IDENTITY(1,1) PRIMARY KEY,
-    Gender VARCHAR(10)
-)
-
--------------------------------------------------------------------------------------
-
--------------------------------- TABLE: Person ---------------------------------
-
-CREATE TABLE Person.Person (
-    PersonId INT IDENTITY(1,1) PRIMARY KEY,
-    FirstName VARCHAR(200) NOT NULL,
-    LastName VARCHAR(200) NOT NULL,
-    PhoneNumber CHAR(12), -- you might not want to have such a precise length
-    CONSTRAINT chk_phone CHECK (PhoneNumber NOT LIKE '%[^0-9+-.]%'),
-    DateofBirth Date,
-    AGE AS DATEDIFF(hour,DateOfBirth,GETDATE())/8766,
-    EmailAddress VARCHAR(200),
-    GenderID INT FOREIGN KEY REFERENCES Person.Gender(GenderID)
-);
-
--------------------------------------------------------------------------------------
-
--------------------------------- TABLE: Employee ---------------------------------
-
-CREATE TABLE Person.Employee (
-    EmployeeId INT IDENTITY(1,1) PRIMARY KEY,
-    CompanyId INT FOREIGN KEY REFERENCES Client.Company(CompanyID),
-    RoleId INT FOREIGN KEY REFERENCES Person.Role(RoleId),
-    JoiningDate DATE,
-    LastDate DATE
-);
-
--------------------------------------------------------------------------------------
-
--------------------------------- TABLE: Role ---------------------------------
-
-CREATE TABLE Person.Role (
-    RoleId INT IDENTITY(1,1) PRIMARY KEY,
-    Position VARCHAR(200)
-);
-
--------------------------------------------------------------------------------------
-
-
--------------------------------- TABLE: Customer ---------------------------------
-
-CREATE TABLE Person.Customer(
-    CustomerId INT IDENTITY(1,1) PRIMARY KEY,
-    CompanyId INT FOREIGN KEY REFERENCES Client.Company(CompanyID)
-);
-
--------------------------------------------------------------------------------------
-
--------------------------------- TABLE: UserDetails ---------------------------------
-
-CREATE TABLE Person.UserDetails (
-    LoginId VARCHAR(200) PRIMARY KEY,
-    EncryptedPassword VARBINARY(250)
-);
--------------------------------------------------------------------------------------
-
-
-------------- Schema: Client -------------
-
-Go
-CREATE SCHEMA Client
-GO
-
--------------------------------------------
-
-
--------------------------------- TABLE: Organization ---------------------------------
-
-CREATE TABLE Client.Organization (
-    OrganizationID INT IDENTITY(1,1) PRIMARY KEY,
-    OrganizationName VARCHAR(200) NOT NULL,
-    OrganizationCountryCode INT FOREIGN KEY REFERENCES territory.country(CountryCode),
-    OrganizationSSN VARCHAR(12) NOT NULL
-);
-
--------------------------------------------------------------------------------------
-
-
--------------------------------- TABLE: China ---------------------------------
-
-CREATE TABLE Client.Company (
-    CompanyID INT IDENTITY(1,1) PRIMARY KEY,
-    OrganizationID INT FOREIGN KEY REFERENCES Client.Organization(OrganizationID),
-    RegionID INT FOREIGN KEY REFERENCES Territory.Region(RegionID) ,
-    CompanyName VARCHAR(200)
-);
-
--------------------------------------------------------------------------------------
