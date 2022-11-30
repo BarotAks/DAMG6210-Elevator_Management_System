@@ -34,7 +34,7 @@ EncryptedPassword,
 PersonId 
 )
 VALUES
-('User 1' , EncryptByKey(Key_GUID(N'PasswordSymmetricKey'), convert(varbinary, 
+('User 1' , EncryptByKey(Key_GUID(N'PasswordSymmetricKeyTeam'), convert(varbinary, 
 'PassTS1')),1);
 
 SELECT * FROM Person.UserDetails;
