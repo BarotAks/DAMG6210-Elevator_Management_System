@@ -86,7 +86,7 @@ CREATE TABLE Client.Organization (
 -------------------------------------------------------------------------------------
 
 
--------------------------------- TABLE: China ---------------------------------
+-------------------------------- TABLE: Company ---------------------------------
 
 CREATE TABLE Client.Company (
     CompanyID INT IDENTITY(1,1) PRIMARY KEY,
