@@ -98,3 +98,65 @@ INSERT INTO Person.Role (Position) VALUES ('Mechanic');
 INSERT INTO Person.Role (Position) VALUES ('Supervisor');
 INSERT INTO Person.Role (Position) VALUES ('Branch Manager');
 INSERT INTO Person.Role (Position) VALUES ('Sales Represetative');
+
+
+------------------------- Territory.Country ---------------------------
+
+ INSERT INTO Territory.Country (CountryName) VALUES ('India');
+ INSERT INTO Territory.Country (CountryName) VALUES ('China');
+ INSERT INTO Territory.Country (CountryName) VALUES ('Brazil');
+ INSERT INTO Territory.Country (CountryName) VALUES ('Nigeria');
+ INSERT INTO Territory.Country (CountryName) VALUES ('Argentina');
+ INSERT INTO Territory.Country (CountryName) VALUES ('Russia');
+ INSERT INTO Territory.Country (CountryName) VALUES ('Japan');
+ INSERT INTO Territory.Country (CountryName) VALUES ('Turkey');
+ INSERT INTO Territory.Country (CountryName) VALUES ('France');
+ INSERT INTO Territory.Country (CountryName) VALUES ('Italy');
+ INSERT INTO Territory.Country (CountryName) VALUES ('Uganda');
+ INSERT INTO Territory.Country (CountryName) VALUES ('Canada');
+
+------------------------- Territory.Region ---------------------------
+
+ INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Northwest',1);
+ INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Southwest',1);
+ INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('North',1);
+ INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('South',1);
+ INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('East',1);
+ INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('West',1);
+ INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('North',2);
+ INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('South',2);
+ INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('East',2);
+ INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('West',2);
+
+------------------------- Territory.Territory ---------------------------
+
+ INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Guam',2);
+ INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('American Samoa',2);
+ INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('United States Virgin Islands',3);
+ INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Northern Mariana Islands',4);
+ INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Bajo Nuevo Bank',5);
+ INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Baker Island',6);
+ INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Howland Island',7);
+ INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Johnston Atoll',8);
+ INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Kingman Reef',1);
+ INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Navassa Island',3);
+ INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Palmyra Atoll',4);
+
+
+------------------------- Territory.Route ---------------------------
+
+ INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Ritidan Point',3);
+ INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Umantac',3);
+ INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Talofofo',3);
+ INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Haines City',4);
+ INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Kissimmee',4);
+ INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Brunswick',4);
+ INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Nadir',5);
+ INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Charlotte Amalie',5);
+ INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('St. Thomas',5);
+ INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Rota',6);
+ INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Tinian',6);
+ INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Saipan',6);
+ INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Victorville',7);
+ INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Honolulu',7);
+ INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Solomon Islands',7);
