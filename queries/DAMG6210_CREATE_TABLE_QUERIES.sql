@@ -86,7 +86,7 @@ CREATE TABLE Client.Organization (
 -------------------------------------------------------------------------------------
 
 
--------------------------------- TABLE: China ---------------------------------
+-------------------------------- TABLE: Company ---------------------------------
 
 CREATE TABLE Client.Company (
     CompanyID INT IDENTITY(1,1) PRIMARY KEY,
@@ -260,12 +260,12 @@ CREATE TABLE Callback.Status
 -------------------------------- TABLE: Callback ------------------------------------
 
 CREATE TABLE Callback.Callback
-(CallbackID INT,
+(CallbackID INT IDENTITY(1,1),
  RouteID INT,
  MechanicID INT,
  StatusID INT FOREIGN KEY REFERENCES Callback.Status(StatusID),
  CallbackDate DATE,
- SerialNumber INT 
+ SerialNumber INT, 
  PRIMARY KEY (CallbackID),
  FOREIGN KEY (RouteID) REFERENCES Territory.Route(RouteID) ,
  FOREIGN KEY (MechanicID) REFERENCES Person.Employee(EmployeeId),
@@ -277,12 +277,12 @@ CREATE TABLE Callback.Callback
 -------------------------------- TABLE: MaintenanceJobs ------------------------------
 
 CREATE TABLE Callback.MaintenanceJobs
-(JobID INT,
+(JobID INT IDENTITY(1,1),
  EmployeeID INT,
  RouteID INT,
  VisitDate DATE,
  JobStatus BIT,
- SerialNumber INT
+ SerialNumber INT,
  PRIMARY KEY (JobID),
  FOREIGN KEY (RouteID) REFERENCES Territory.Route(RouteID) ,
  FOREIGN KEY (EmployeeID) REFERENCES Person.Employee(EmployeeId),
