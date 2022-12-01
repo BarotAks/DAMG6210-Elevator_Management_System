@@ -5,147 +5,80 @@ INSERT INTO Territory.Country (CountryName) VALUES ('United States');
 INSERT INTO Territory.Country (CountryName) VALUES ('United Kingdom'); 
 INSERT INTO Territory.Country (CountryName) VALUES ('India');
 INSERT INTO Territory.Country (CountryName) VALUES ('China');
-INSERT INTO Territory.Country (CountryName) VALUES ('Brazil');
-INSERT INTO Territory.Country (CountryName) VALUES ('Nigeria');
-INSERT INTO Territory.Country (CountryName) VALUES ('Argentina');
 INSERT INTO Territory.Country (CountryName) VALUES ('Russia');
 INSERT INTO Territory.Country (CountryName) VALUES ('Japan');
 INSERT INTO Territory.Country (CountryName) VALUES ('Turkey');
 INSERT INTO Territory.Country (CountryName) VALUES ('France');
 INSERT INTO Territory.Country (CountryName) VALUES ('Italy');
-INSERT INTO Territory.Country (CountryName) VALUES ('Uganda');
 INSERT INTO Territory.Country (CountryName) VALUES ('Canada');
-INSERT INTO Territory.Country (CountryName) VALUES ('Australia');
-INSERT INTO Territory.Country (CountryName) VALUES ('Nepal');
-INSERT INTO Territory.Country (CountryName) VALUES ('Germany');
-INSERT INTO Territory.Country (CountryName) VALUES ('Mexico');
-INSERT INTO Territory.Country (CountryName) VALUES ('Sri Lanka');
-INSERT INTO Territory.Country (CountryName) VALUES ('Bangladesh');
-INSERT INTO Territory.Country (CountryName) VALUES ('Belgium');
-INSERT INTO Territory.Country (CountryName) VALUES ('Poland');
-INSERT INTO Territory.Country (CountryName) VALUES ('South Korea');
-INSERT INTO Territory.Country (CountryName) VALUES ('New Zealand');
-INSERT INTO Territory.Country (CountryName) VALUES ('Spain');
 
 ------------------------- Territory.Region ---------------------------
 INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Northwest',1);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Southwest',3);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Northeast',5);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Southeast',7);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('North',1);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('South',8);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('East',10);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('West',12);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('North',20);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('South',18);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('East',14);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('West',14);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Northeast',17);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Southwest',23);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Southwest',1);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Southeast',1);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Northeast',1);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Northwest',2);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Southwest',2);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Southeast',2);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Northeast',2);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('North',3);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('South',3);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('East',3);
 INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('West',3);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('North',5);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('East',6);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('South',8);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Southwest',12);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Northwest',22);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('West',21);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('East',22);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Southeast',25);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Northeast',15);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('North',12);
 
 ------------------------- Territory.Territory ---------------------------
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Guam',2);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('American Samoa',2);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('United States Virgin Islands',3);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Northern Mariana Islands',4);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Bajo Nuevo Bank',5);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Baker Island',6);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Howland Island',7);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Johnston Atoll',8);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Kingman Reef',1);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Navassa Island',3);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Palau',5);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Midway Islands',16);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Baker Island',19);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Jarvis Island',12);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Kingman Reef',13);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('American Samoa',10);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Guam',16);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Serranilla Bank',17);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Jarvis Island',12);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Palmyra Atoll',14);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Palau',23);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Bajo Nuevo Bank',24);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Baker Island',18);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Northern Mariana Islands',20);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Marshall Islands',25);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Berkshire',4);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Franklin',4);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Worcester',4);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Middlesex',4);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Hampshire',4);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Hampden',4);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Bristol',4);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Dukes',4);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Nantucket',4);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Barnstable',4);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Plymouth',4);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Norfolk',4);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Suffolk',4);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Essex',4);
 
 ------------------------- Territory.Route ---------------------------
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Ritidan Point',3);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Umantac',5);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Talofofo',12);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Haines City',14);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Kissimmee',4);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Brunswick',6);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Nadir',8);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Charlotte Amalie',4);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('St. Thomas',14);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Rota',16);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Tinian',19);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Saipan',23);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Victorville',20);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Honolulu',17);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Tokyo',7);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Queensland',12);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Capri',12);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Seoul',22);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Mumbai',13);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Madrid',9);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Munich',18);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Lyon',14);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Hongzhou',2);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Provincetown',9);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Pasadena',11);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Allston',4);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Boston',4);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Brighton',4);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Charlestown',4);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Chelsea',4);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Dorchester',4);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Dorchester Center',4);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Hyde Park',4);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Jamaica Plain',4);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Mattapan',4);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Revere',4);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Roslindale',4);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Roxbury',4);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Roxbury Crossing',4);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('West Roxbury',4);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Winthrop',4);
 
 ------------------------- Client.Organization ---------------------------
 INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS US',1,'999-999-9999');
 INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS UK',2,'129-567-9999');
 INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS IN',3,'159-678-9699');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS CA',14,'906-657-9499');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS MX',18,'349-496-9299');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS AU',15,'149-570-9199');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS SL',19,'134-123-9199');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS ES',25,'179-367-9023');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS FR',11,'567-457-8301');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS JP',9,'432-980-9824');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS NP',16,'892-683-3249');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS BD',20,'980-948-7428');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS DE',17,'025-729-5795');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS NZ',24,'105-232-7625');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS BG',21,'124-550-0953');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS PL',22,'924-785-9803');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS UG',13,'893-340-6748');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS TR',10,'128-888-9192');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS AR',7,'174-999-6223');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS RU',8,'888-552-8765');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS NG',6,'009-429-3574');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS CN',4,'319-549-9134');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS BR',5,'828-502-7824');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS IT',12,'893-781-4710');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS SK',23,'914-960-1641');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS CH',4,'906-657-9499');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS RU',5,'349-496-9299');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS JP',6,'149-570-9199');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS TR',7,'134-123-9199');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS FR',8,'179-367-9023');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS IT',9,'567-457-8301');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS CA',10,'432-980-9824');
+
 
 ------------------------- Client.Company ---------------------------
-INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (1,1,'Otis Northwest');
-INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (2,2,'Otis Southeast');
-INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (3,3,'Otis Northeast');
-INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (4,2,'Otis Northwest');
-INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (5,1,'Otis Northwest');
-INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (6,1,'Otis Southwest');
-INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (7,1,'Otis Southwest');
-INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (1,4,'Otis Southwest');
-INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (2,3,'Brazil');
-INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (3,3,'China');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (1,1,'Otis US: Northwest');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (1,2,'Otis US: Southwest');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (1,3,'Otis US: Southeast');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (1,4,'Otis US: Northeast');
+
 
 ------------------------- ProductType ---------------------------
 INSERT INTO Product.ProductType (Name) VALUES ('DUMBWAITER');
@@ -223,15 +156,16 @@ INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddre
 
 ------------------------Employee-----------------------------
 EXECUTE CreateEmployee @EmployeeId=1,@CompanyId=1,@RoleId=1,@JoiningDate='11/30/2022'
-EXECUTE CreateEmployee @EmployeeId=2,@CompanyId=1,@RoleId=3,@JoiningDate='11/30/2022'
-EXECUTE CreateEmployee @EmployeeId=3,@CompanyId=2,@RoleId=2,@JoiningDate='10/30/2022'
-EXECUTE CreateEmployee @EmployeeId=4,@CompanyId=2,@RoleId=1,@JoiningDate='10/30/2022'
-EXECUTE CreateEmployee @EmployeeId=5,@CompanyId=3,@RoleId=3,@JoiningDate='9/30/2022'
-EXECUTE CreateEmployee @EmployeeId=6,@CompanyId=3,@RoleId=2,@JoiningDate='9/30/2022'
-EXECUTE CreateEmployee @EmployeeId=7,@CompanyId=4,@RoleId=1,@JoiningDate='8/14/2022'
-EXECUTE CreateEmployee @EmployeeId=8,@CompanyId=4,@RoleId=3,@JoiningDate='8/30/2022'
-EXECUTE CreateEmployee @EmployeeId=9,@CompanyId=5,@RoleId=2,@JoiningDate='7/30/2022'
-EXECUTE CreateEmployee @EmployeeId=10,@CompanyId=5,@RoleId=2,@JoiningDate='7/30/2022'
+EXECUTE CreateEmployee @EmployeeId=2,@CompanyId=1,@RoleId=1,@JoiningDate='11/30/2022'
+EXECUTE CreateEmployee @EmployeeId=3,@CompanyId=1,@RoleId=1,@JoiningDate='10/30/2022'
+EXECUTE CreateEmployee @EmployeeId=4,@CompanyId=1,@RoleId=1,@JoiningDate='10/30/2022'
+EXECUTE CreateEmployee @EmployeeId=5,@CompanyId=1,@RoleId=,@JoiningDate='9/30/2022'
+EXECUTE CreateEmployee @EmployeeId=6,@CompanyId=1,@RoleId=2,@JoiningDate='9/30/2022'
+EXECUTE CreateEmployee @EmployeeId=7,@CompanyId=1,@RoleId=2,@JoiningDate='8/14/2022'
+EXECUTE CreateEmployee @EmployeeId=8,@CompanyId=1,@RoleId=3,@JoiningDate='8/30/2022'
+EXECUTE CreateEmployee @EmployeeId=9,@CompanyId=1,@RoleId=4,@JoiningDate='6/30/2022'
+EXECUTE CreateEmployee @EmployeeId=10,@CompanyId=1,@RoleId=4,@JoiningDate='6/15/2022'
+
 
 ------------------------Customer-----------------------------
 EXECUTE CreateCustomer @CustomerId=11,@CompanyId=1
@@ -242,171 +176,83 @@ EXECUTE CreateCustomer @CustomerId=15,@CompanyId=3
 EXECUTE CreateCustomer @CustomerId=16,@CompanyId=3
 EXECUTE CreateCustomer @CustomerId=17,@CompanyId=4
 EXECUTE CreateCustomer @CustomerId=18,@CompanyId=4
-EXECUTE CreateCustomer @CustomerId=19,@CompanyId=5
-EXECUTE CreateCustomer @CustomerId=20,@CompanyId=5
+
 
 ------------------------ PROCEDURE: InsertTerritoryBuilding-------------------------
+EXECUTE InsertTerritoryBuilding @StreetNumber=34,@Address1='Wigglesworth',@Address2='Boston,MA', @RouteID=2
+EXECUTE InsertTerritoryBuilding @StreetNumber=68, @Address1='Day Street',@Address2='Boston,MA', @RouteID=2
+EXECUTE InsertTerritoryBuilding @StreetNumber=45, @Address1='School Street',@Address2='Boston,MA', @RouteID=2
+EXECUTE InsertTerritoryBuilding @StreetNumber=75, @Address1='St. Alphonsus Street',@Address2='Boston,MA', @RouteID=2
+EXECUTE InsertTerritoryBuilding @StreetNumber=168, @Address1='Peterborough Street',@Address2='Boston,MA', @RouteID=2
+EXECUTE InsertTerritoryBuilding @StreetNumber=2,@Address1='N Harvard St',@Address2='Allston,MA', @RouteID=1
+EXECUTE InsertTerritoryBuilding @StreetNumber=43, @Address1='Rotterdam St',@Address2='Allston,MA', @RouteID=1
+EXECUTE InsertTerritoryBuilding @StreetNumber=41, @Address1='Arlington Street',@Address2='Brighton,MA', @RouteID=3
+EXECUTE InsertTerritoryBuilding @StreetNumber=7, @Address1='Duncklee Street',@Address2='Brighton,MA', @RouteID=3
+EXECUTE InsertTerritoryBuilding @StreetNumber=168, @Address1='Woodrow Avenue',@Address2='Dorchester,MA', @RouteID=6
 
-EXECUTE InsertTerritoryBuilding
-  @StreetNumber=111,
-  @Address1='42 People Street',
-  @Address2='Texas',
-  @RouteID=3
- GO
-EXECUTE InsertTerritoryBuilding
-  @StreetNumber=68,
-  @Address1='34 Wigglesworth',
-  @Address2='Boston,MA',
-  @RouteID=2
- GO
-EXECUTE InsertTerritoryBuilding
-  @StreetNumber=232,
-  @Address1='DayStreet Street',
-  @Address2='Boston,MA',
-  @RouteID=1
- GO
-EXECUTE InsertTerritoryBuilding
-  @StreetNumber=68,
-  @Address1='Hungtington Avenue',
-  @Address2='Florida',
-  @RouteID=3
- GO
- EXECUTE InsertTerritoryBuilding
-  @StreetNumber=452,
-  @Address1='Alpine Street',
-  @Address2='Austin',
-  @RouteID=2
- GO
-EXECUTE InsertTerritoryBuilding
-  @StreetNumber=68,
-  @Address1='456 JVue',
-  @Address2='Houston',
-  @RouteID=1
- GO
-EXECUTE InsertTerritoryBuilding
-  @StreetNumber=345,
-  @Address1='Mission Main',
-  @Address2='Illionis',
-  @RouteID=1
- GO
-EXECUTE InsertTerritoryBuilding
-  @StreetNumber=565,
-  @Address1='Mission Hill',
-  @Address2='New Jersey',
-  @RouteID=4
- GO
-EXECUTE InsertTerritoryBuilding
-  @StreetNumber=534,
-  @Address1='34 Ridge',
-  @Address2='New York',
-  @RouteID=4
- GO
-EXECUTE InsertTerritoryBuilding
-  @StreetNumber=467,
-  @Address1='23 Pimpoli Street',
-  @Address2='Blue Mountains,New Hampshire',
-  @RouteID=4
- GO
- EXECUTE InsertTerritoryBuilding
-  @StreetNumber=454,
-  @Address1='345 Roxbury',
-  @Address2='New Brunswick',
-  @RouteID=5
- GO
-EXECUTE InsertTerritoryBuilding
-  @StreetNumber=345,
-  @Address1='782 Washington Ave',
-  @Address2='California,San Fransico',
-  @RouteID=5
- GO
-EXECUTE InsertTerritoryBuilding
-  @StreetNumber=89,
-  @Address1='355 MinionLand',
-  @Address2='Disney World,Florida',
-  @RouteID=5
- GO
-EXECUTE InsertTerritoryBuilding
-  @StreetNumber=667,
-  @Address1='45 Illis Street',
-  @Address2='Arizona',
-  @RouteID=6
- GO
- EXECUTE InsertTerritoryBuilding
-  @StreetNumber=2,
-  @Address1='356 Oslin Apt',
-  @Address2='Pipor,Maine',
-  @RouteID=6
- GO
-EXECUTE InsertTerritoryBuilding
-  @StreetNumber=456,
-  @Address1='355 Persian Pit',
-  @Address2='Pinge,Portland',
-  @RouteID=6
- GO
-EXECUTE InsertTerritoryBuilding
-  @StreetNumber=345,
-  @Address1='345 Mission Main',
-  @Address2='Sam Island,Georgia',
-  @RouteID=7
- GO
-EXECUTE InsertTerritoryBuilding
-  @StreetNumber=86,
-  @Address1='24 Poplin Street',
-  @Address2='Connecticut',
-  @RouteID=7
- GO
-EXECUTE InsertTerritoryBuilding
-  @StreetNumber=930,
-  @Address1='34 Rehab Street',
-  @Address2='Tins,Ohai',
-  @RouteID=7
- GO
-EXECUTE InsertTerritoryBuilding
-  @StreetNumber=67,
-  @Address1='454 Opppo Street',
-  @Address2='Blue Ridge,Utai',
-  @RouteID=8
- GO
 
 -------------------------- PROCEDURE: InsertContractUnit ------------------------
 
-EXECUTE InsertContractUnit @ProductId=4,@IsActive=0,@BuildingID=1
 EXECUTE InsertContractUnit @ProductId=4,@IsActive=1,@BuildingID=1
-EXECUTE InsertContractUnit @ProductId=3,@IsActive=1,@BuildingID=2
-EXECUTE InsertContractUnit @ProductId=3,@IsActive=1,@BuildingID=2
-EXECUTE InsertContractUnit @ProductId=1,@IsActive=1,@BuildingID=3
-EXECUTE InsertContractUnit @ProductId=1,@IsActive=1,@BuildingID=3
-EXECUTE InsertContractUnit @ProductId=5,@IsActive=1,@BuildingID=4
-EXECUTE InsertContractUnit @ProductId=5,@IsActive=1,@BuildingID=4
-EXECUTE InsertContractUnit @ProductId=4,@IsActive=1,@BuildingID=5
-EXECUTE InsertContractUnit @ProductId=4,@IsActive=1,@BuildingID=6
-EXECUTE InsertContractUnit @ProductId=6,@IsActive=1,@BuildingID=7
-EXECUTE InsertContractUnit @ProductId=6,@IsActive=1,@BuildingID=8
-EXECUTE InsertContractUnit @ProductId=4,@IsActive=1,@BuildingID=8
-EXECUTE InsertContractUnit @ProductId=4,@IsActive=0,@BuildingID=9
-EXECUTE InsertContractUnit @ProductId=3,@IsActive=1,@BuildingID=9
-EXECUTE InsertContractUnit @ProductId=3,@IsActive=0,@BuildingID=9
-EXECUTE InsertContractUnit @ProductId=4,@IsActive=1,@BuildingID=10
-EXECUTE InsertContractUnit @ProductId=8,@IsActive=1,@BuildingID=10
-EXECUTE InsertContractUnit @ProductId=9,@IsActive=1,@BuildingID=11
-EXECUTE InsertContractUnit @ProductId=9,@IsActive=1,@BuildingID=12
+EXECUTE InsertContractUnit @ProductId=2,@IsActive=1,@BuildingID=1
+EXECUTE InsertContractUnit @ProductId=2,@IsActive=1,@BuildingID=1
+EXECUTE InsertContractUnit @ProductId=3,@IsActive=1,@BuildingID=1
+EXECUTE InsertContractUnit @ProductId=3,@IsActive=1,@BuildingID=1
+EXECUTE InsertContractUnit @ProductId=5,@IsActive=1,@BuildingID=2
+EXECUTE InsertContractUnit @ProductId=5,@IsActive=1,@BuildingID=2
+EXECUTE InsertContractUnit @ProductId=5,@IsActive=1,@BuildingID=2
+EXECUTE InsertContractUnit @ProductId=2,@IsActive=1,@BuildingID=2
+EXECUTE InsertContractUnit @ProductId=2,@IsActive=1,@BuildingID=2
 
--------------------------- PROCEDURE: RegisterCallback ------------------------
+-------------------------- Callback ------------------------
 
-EXECUTE RegisterCallback 1
-EXECUTE RegisterCallback 2
-EXECUTE RegisterCallback 3
-EXECUTE RegisterCallback 2
-EXECUTE RegisterCallback 3
-EXECUTE RegisterCallback 1
-EXECUTE RegisterCallback 1
-EXECUTE RegisterCallback 2
-EXECUTE RegisterCallback 2
-EXECUTE RegisterCallback 2
-EXECUTE RegisterCallback 4
-EXECUTE RegisterCallback 4
-EXECUTE RegisterCallback 5
-EXECUTE RegisterCallback 5
-EXECUTE RegisterCallback 5
-EXECUTE RegisterCallback 5
+DECLARE @Counter INT 
+SET @Counter=1
+WHILE ( @Counter <= 15)
+BEGIN
+    EXECUTE RegisterCallbackRandomizer 1
+    SET @Counter = @Counter + 1;
+END
+
+SET @Counter=1
+WHILE ( @Counter <= 15)
+BEGIN
+    EXECUTE RegisterCallbackRandomizer 2
+    SET @Counter = @Counter + 1;
+END
+
+SET @Counter=1
+WHILE ( @Counter <= 15)
+BEGIN
+    EXECUTE RegisterCallbackRandomizer 3
+    SET @Counter = @Counter + 1;
+END
+
+SET @Counter = 14 
+WHILE ( @Counter <= 25)
+BEGIN
+    EXECUTE CancelCallback @Counter
+    SET @Counter = @Counter + 1;
+END
+
+SET @Counter = 26 
+WHILE ( @Counter <= 31)
+BEGIN
+    EXECUTE CompletedCallback @Counter
+    SET @Counter = @Counter + 1;
+END
+
+SET @Counter = 32
+WHILE ( @Counter <= 41)
+BEGIN
+    EXECUTE ClosedCallback @Counter
+    SET @Counter = @Counter + 1;
+END
+
+-------------------------- Callback ------------------------
+
+
+
+
+
 

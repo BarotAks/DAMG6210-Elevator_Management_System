@@ -95,6 +95,36 @@ CREATE TABLE Client.Company (
     CompanyName VARCHAR(200)
 );
 
+
+--------- Constraint ----------
+
+GO
+CREATE OR ALTER FUNCTION dbo.CheckRegion
+(@RegionID INT, @OrganizationID INT)
+RETURNS INT
+AS 
+BEGIN
+    RETURN (
+        SELECT 
+            COUNT(*)
+        FROM
+            Client.Organization org
+        INNER JOIN 
+            Territory.Region reg ON reg.CountryCode = org.OrganizationCountryCode
+        WHERE 
+            org.OrganizationID = @OrganizationID
+            AND reg.RegionID = @RegionID
+    )
+END
+GO
+
+-- SELECT * FROM Client.Organization;
+-- SELECT * FROM Territory.Region
+
+-- ALTER TABLE Client.Company DROP CONSTRAINT chk_CheckRegion
+-- GO
+ALTER TABLE Client.Company ADD CONSTRAINT chk_CheckRegion CHECK (dbo.CheckRegion(Company.RegionID,Company.OrganizationID) <> 0)
+
 -------------------------------------------------------------------------------------
 
 ------------- Schema: Product -------------
@@ -225,16 +255,17 @@ CREATE TABLE Contract.Unit(
 -------------------------------- TABLE: Sale ------------------------------------
 
 CREATE TABLE Contract.Sale(
-	SaleID int IDENTITY(1,1) PRIMARY KEY,
-    SerialNo int FOREIGN KEY REFERENCES Contract.Unit(SerialNo),
-	SalesRepID int FOREIGN KEY REFERENCES Person.Employee(EmployeeId),
-	BillingCycle varchar(255),
-	Price money,
-	ContractDate date,
-	CustomerID int FOREIGN KEY REFERENCES Person.Customer(CustomerId),
-	Tenure numeric,
-	BillingMode varchar(255),
-	CompanyID int FOREIGN KEY REFERENCES Client.Company(CompanyID)
+	SaleID INT IDENTITY(1,1) PRIMARY KEY,
+    SerialNo INT FOREIGN KEY REFERENCES Contract.Unit(SerialNo),
+    Quantity INT NOT NULL,
+	SalesRepID INT FOREIGN KEY REFERENCES Person.Employee(EmployeeId),
+	BillingCycle varchar(255) NOT NULL,
+	Discount INT NOT NULL,
+	ContractDate DATE NOT NULL,
+	CustomerID INT FOREIGN KEY REFERENCES Person.Customer(CustomerId),
+	Tenure NUMERIC NOT NULL,
+	BillingMode VARCHAR(255) NOT NULL,
+    CompanyID INT FOREIGN KEY REFERENCES Client.Company(CompanyID)
 );
 
 -------------------------------------------------------------------------------------
