@@ -330,7 +330,61 @@ BEGIN
                   @BillingMode,
                   @companyId
             )
+END
 
+------------------------- PROCEDURE: CreateSaleRandomizer ------------------------
+
+CREATE OR ALTER PROCEDURE CreateSaleRandomizer 
+      @SerialNo INT,
+      @Quantity INT, 
+      @SalesRepID INT,
+      @BillingCycle VARCHAR(255),
+      @Discount INT,
+	@ContractDate DATE,
+	@CustomerID INT,
+	@Tenure NUMERIC,
+	@BillingMode VARCHAR(255)
+AS
+BEGIN
+
+      -- Get SalesRep
+      DECLARE @SalesRepID INT = (SELECT TOP 1 EmployeeId FROM Person.Employee WHERE RoleID = 4 ORDER BY NEWID())
+      
+      -- Fetch Company ID
+      DECLARE @CompanyId INT = (
+            SELECT CompanyId FROM Person.Employee WHERE EmployeeId = @SalesRepID
+      )
+
+      -- Get Customer
+      DECLARE @CustomerID INT = (SELECT TOP 1 CustomerID FROM Person.Customer WHERE CompanyId <> @CompanyId ORDER BY NEWID())
+
+      -- Insert data into Sale
+      INSERT INTO Contract.Sale
+            (
+                  SerialNo,
+                  Quantity,
+                  SalesRepID,
+                  BillingCycle,
+                  Discount,
+                  ContractDate,
+                  CustomerID,
+                  Tenure,
+                  BillingMode,
+                  CompanyID
+            ) 
+            VALUES
+            (
+                  @SerialNo,
+                  @Quantity,
+                  @SalesRepID,
+                  @BillingCycle,
+                  @Discount,
+                  @ContractDate,
+                  @CustomerID,
+                  @Tenure,
+                  @BillingMode,
+                  @companyId
+            )
 END
 
 
