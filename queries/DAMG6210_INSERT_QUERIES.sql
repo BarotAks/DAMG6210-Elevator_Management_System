@@ -13,20 +13,44 @@ INSERT INTO Territory.Country (CountryName) VALUES ('France');
 INSERT INTO Territory.Country (CountryName) VALUES ('Italy');
 INSERT INTO Territory.Country (CountryName) VALUES ('Uganda');
 INSERT INTO Territory.Country (CountryName) VALUES ('Canada');
+INSERT INTO Territory.Country (CountryName) VALUES ('Australia');
+INSERT INTO Territory.Country (CountryName) VALUES ('Nepal');
+INSERT INTO Territory.Country (CountryName) VALUES ('Germany');
+INSERT INTO Territory.Country (CountryName) VALUES ('Mexico');
+INSERT INTO Territory.Country (CountryName) VALUES ('Sri Lanka');
+INSERT INTO Territory.Country (CountryName) VALUES ('Bangladesh');
+INSERT INTO Territory.Country (CountryName) VALUES ('Belgium');
+INSERT INTO Territory.Country (CountryName) VALUES ('Poland');
+INSERT INTO Territory.Country (CountryName) VALUES ('South Korea');
+INSERT INTO Territory.Country (CountryName) VALUES ('New Zealand');
+INSERT INTO Territory.Country (CountryName) VALUES ('Spain');
 
 ------------------------- Territory.Region ---------------------------
 INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Northwest',1);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Southwest',1);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Northeast',1);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Southeast',1);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Southwest',3);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Northeast',5);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Southeast',7);
 INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('North',1);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('South',1);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('East',1);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('West',1);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('North',2);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('South',2);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('East',2);
-INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('West',2);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('South',8);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('East',10);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('West',12);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('North',20);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('South',18);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('East',14);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('West',14);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Northeast',17);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Southwest',23);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('West',3);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('North',5);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('East',6);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('South',8);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Southwest',12);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Northwest',22);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('West',21);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('East',22);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Southeast',25);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('Northeast',15);
+INSERT INTO Territory.Region (RegionName,CountryCode) VALUES ('North',12);
 
 ------------------------- Territory.Territory ---------------------------
 INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Guam',2);
@@ -39,33 +63,75 @@ INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Howland Island
 INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Johnston Atoll',8);
 INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Kingman Reef',1);
 INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Navassa Island',3);
-INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Palmyra Atoll',4);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Palau',5);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Midway Islands',16);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Baker Island',19);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Jarvis Island',12);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Kingman Reef',13);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('American Samoa',10);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Guam',16);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Serranilla Bank',17);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Jarvis Island',12);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Palmyra Atoll',14);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Palau',23);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Bajo Nuevo Bank',24);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Baker Island',18);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Northern Mariana Islands',20);
+INSERT INTO Territory.Territory (TerritoryName,RegionID) VALUES ('Marshall Islands',25);
 
 ------------------------- Territory.Route ---------------------------
 INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Ritidan Point',3);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Umantac',3);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Talofofo',3);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Haines City',4);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Umantac',5);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Talofofo',12);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Haines City',14);
 INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Kissimmee',4);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Brunswick',4);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Nadir',5);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Charlotte Amalie',5);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('St. Thomas',5);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Rota',6);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Tinian',6);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Saipan',6);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Victorville',7);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Honolulu',7);
-INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Solomon Islands',7);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Brunswick',6);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Nadir',8);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Charlotte Amalie',4);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('St. Thomas',14);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Rota',16);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Tinian',19);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Saipan',23);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Victorville',20);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Honolulu',17);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Tokyo',7);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Queensland',12);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Capri',12);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Seoul',22);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Mumbai',13);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Madrid',9);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Munich',18);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Lyon',14);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Hongzhou',2);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Provincetown',9);
+INSERT INTO Territory.Route(RouteName,TerritoryID) VALUES ('Pasadena',11);
 
 ------------------------- Client.Organization ---------------------------
 INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS US',1,'999-999-9999');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS US',2,'129-678-9999');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS US',2,'159-678-9699');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS US',1,'129-678-9499');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS US',2,'349-678-9299');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS US',1,'149-678-9199');
-INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS US',1,'134-678-9199');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS UK',2,'129-567-9999');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS IN',3,'159-678-9699');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS CA',14,'906-657-9499');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS MX',18,'349-496-9299');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS AU',15,'149-570-9199');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS SL',19,'134-123-9199');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS ES',25,'179-367-9023');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS FR',11,'567-457-8301');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS JP',9,'432-980-9824');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS NP',16,'892-683-3249');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS BD',20,'980-948-7428');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS DE',17,'025-729-5795');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS NZ',24,'105-232-7625');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS BG',21,'124-550-0953');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS PL',22,'924-785-9803');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS UG',13,'893-340-6748');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS TR',10,'128-888-9192');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS AR',7,'174-999-6223');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS RU',8,'888-552-8765');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS NG',6,'009-429-3574');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS CN',4,'319-549-9134');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS BR',5,'828-502-7824');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS IT',12,'893-781-4710');
+INSERT INTO Client.Organization (OrganizationName,OrganizationCountryCode,OrganizationSSN) VALUES ('OTIS SK',23,'914-960-1641');
 
 ------------------------- Client.Company ---------------------------
 INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (1,1,'Otis Northwest');
@@ -81,14 +147,38 @@ INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (3,3,'Ch
 
 ------------------------- ProductType ---------------------------
 INSERT INTO Product.ProductType (Name) VALUES ('DUMBWAITER');
-INSERT INTO Product.ProductType (Name) VALUES ('ELEVATOR');
+INSERT INTO Product.ProductType (Name) VALUES ('LOW RISE-ELEVATOR');
 INSERT INTO Product.ProductType (Name) VALUES ('ESCALATOR'); 
+INSERT INTO Product.ProductType (Name) VALUES ('MOVING WALKS');
+INSERT INTO Product.ProductType (Name) VALUES ('MID RISE-ELEVATOR');
+INSERT INTO Product.ProductType (Name) VALUES ('HIGH RISE-ELEVATOR'); 
+INSERT INTO Product.ProductType (Name) VALUES ('BOAT LIFTS');
+INSERT INTO Product.ProductType (Name) VALUES ('STAGE LIFTS');
+INSERT INTO Product.ProductType (Name) VALUES ('SIDEWALK ELEVATORS');
+INSERT INTO Product.ProductType (Name) VALUES ('SCISSOR LIFT');
+
 
 ------------------------- Product ---------------------------
-INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('SK500',200,1,'12/20/1996',1); 
-INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('SK555',400,1,'12/20/1996',0); 
-INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('SK999',1000,1,'12/20/2006',1); 
-INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('KT420',9999,3,'8/14/1993',1); 
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('DW300',1000,1,'01/24/1999',1);
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('LR500',2000,2,'12/21/1997',0); 
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('ES555',5000,3,'02/26/1996',1); 
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('MV999',2000,4,'12/02/2006',1); 
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('MR400',5599,5,'06/14/1993',0); 
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('HR800',9000,6,'05/03/1994',0);
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('BL250',9999,7,'08/14/1993',1);
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('SL190',3459,8,'05/03/1994',1);
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('SE899',9999,9,'07/07/2004',1);
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('SC420',6900,10,'10/16/1997',1);
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('DW300',1000,1,'06/20/2003',0);
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('LR500',2000,2,'02/12/2000',1);
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('ES555',5000,3,'12/02/2006',1); 
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('MV999',2000,4,'12/02/2002',0); 
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('MR400',5599,5,'09/24/1999',1); 
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('HR800',9000,6,'11/23/2004',1);
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('BL250',9999,7,'09/23/1999',1);
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('SL190',3459,8,'01/20/1999',1);
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('SE899',9999,9,'10/29/2000',1);
+INSERT INTO Product.Product (ProductName,FixedPrice,ProductTypeID,ManufacturingDate,IsCommercial) VALUES ('SC420',6900,10,'07/02/1999',1);
 
 ------------------------- Status ---------------------------
 INSERT INTO Callback.Status (StatusType) VALUES ('Active')
@@ -99,13 +189,42 @@ INSERT INTO Callback.Status (StatusType) VALUES ('Cancelled')
 ------------------------- Gender ---------------------------
 INSERT INTO Person.Gender (Gender) VALUES ('MALE');
 INSERT INTO Person.Gender (Gender) VALUES ('FEMALE');
-INSERT INTO Person.Gender (Gender) VALUES ('Other');
+INSERT INTO Person.Gender (Gender) VALUES ('OTHER');
 
 ------------------------- Client.Role ---------------------------
 INSERT INTO Person.Role (Position) VALUES ('Mechanic');
 INSERT INTO Person.Role (Position) VALUES ('Supervisor');
 INSERT INTO Person.Role (Position) VALUES ('Branch Manager');
 INSERT INTO Person.Role (Position) VALUES ('Sales Represetative');
+
+------------------------- Person ---------------------------
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Akshita','Barot','870-567-0987','06/22/1995','aks@otis.com',2);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Siddhant','Kohli','900-127-3507','12/20/1996','sid@otis.com',1);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Aniruddha','Tambe','125-674-3045','10/31/1996','ani@otis.com',1);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Kinjal','Thakkar','800-289-8247','07/07/1997','kinjal@otis.com',2);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Forum','Bhatt','764-123-8765','04/08/1997','foram@otis.com',2);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Vishwa','Shah','790-345-8900','01/13/1994','vish@otis.com',2);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Rishabh','Mehra','679-007-2357','03/02/1990','rish@otis.com',1);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Mehul','Sharma','762-827-0274','07/02/1980','mehul@otis.com',1);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Kate','Tyler','890-530-0931','12/12/1985','kate@otis.com',3);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Robert','Tate','456-780-2907','05/29/1989','rob@otis.com',1);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Vince','Bach','782-758-0127','10/03/1979','vince@otis.com',1);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Sebastian','Novak','435-098-1230','09/28/1988','seb@otis.com',3);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Susan','Connor','890-409-6279','01/01/1990','sus@otis.com',3);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Jeff','Johnson','900-780-0001','05/24/1998','jeff@otis.com',1);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Marlene','Grace','800-145-7379','08/30/1994','marlene@otis.com',3);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Ann','Claire','790-820-5611','11/11/1983','ann@otis.com',2);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('John','Andrew','908-569-1203','03/31/1976','john@otis.com',1);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Frank','Hill','901-111-8900','08/12/1989','frank@otis.com',1);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Rick','Forbis','901-524-5678','04/28/1986','rick@otis.com',1);
+INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Graham','Coleman','870-567-0987','12/12/1982','graham@otis.com',1);
+
+------------------------Employee-----------------------------
+
+
+
+
+
 
 ------------------------ PROCEDURE: InsertTerritoryBuilding-------------------------
 
