@@ -209,21 +209,21 @@ EXECUTE InsertContractUnit @ProductId=2,@IsActive=1,@BuildingID=2
 
 DECLARE @Counter INT 
 SET @Counter=1
-WHILE ( @Counter <= 15)
+WHILE ( @Counter <= 150)
 BEGIN
     EXECUTE RegisterCallbackRandomizer 1
     SET @Counter = @Counter + 1;
 END
 
 SET @Counter=1
-WHILE ( @Counter <= 15)
+WHILE ( @Counter <= 100)
 BEGIN
     EXECUTE RegisterCallbackRandomizer 2
     SET @Counter = @Counter + 1;
 END
 
 SET @Counter=1
-WHILE ( @Counter <= 15)
+WHILE ( @Counter <= 75)
 BEGIN
     EXECUTE RegisterCallbackRandomizer 3
     SET @Counter = @Counter + 1;
@@ -244,7 +244,7 @@ BEGIN
 END
 
 SET @Counter = 32
-WHILE ( @Counter <= 41)
+WHILE ( @Counter <= 42)
 BEGIN
     EXECUTE ClosedCallback @Counter
     SET @Counter = @Counter + 1;
@@ -252,7 +252,15 @@ END
 
 -------------------------- Callback ------------------------
 
+SET @Counter = 1
+WHILE ( @Counter <= 105)
+BEGIN
+    EXECUTE CreateSaleRandomizer
+    SET @Counter = @Counter + 1;
+END
 
+
+SELECT * FROM Contract.Sale
 
 
 
