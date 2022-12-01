@@ -155,11 +155,12 @@ INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddre
 INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Graham','Coleman','870-567-0987','12/12/1982','graham@otis.com',1);
 
 ------------------------Employee-----------------------------
+
 EXECUTE CreateEmployee @EmployeeId=1,@CompanyId=1,@RoleId=1,@JoiningDate='11/30/2022'
 EXECUTE CreateEmployee @EmployeeId=2,@CompanyId=1,@RoleId=1,@JoiningDate='11/30/2022'
 EXECUTE CreateEmployee @EmployeeId=3,@CompanyId=1,@RoleId=1,@JoiningDate='10/30/2022'
 EXECUTE CreateEmployee @EmployeeId=4,@CompanyId=1,@RoleId=1,@JoiningDate='10/30/2022'
-EXECUTE CreateEmployee @EmployeeId=5,@CompanyId=1,@RoleId=,@JoiningDate='9/30/2022'
+EXECUTE CreateEmployee @EmployeeId=5,@CompanyId=1,@RoleId=1,@JoiningDate='9/30/2022'
 EXECUTE CreateEmployee @EmployeeId=6,@CompanyId=1,@RoleId=2,@JoiningDate='9/30/2022'
 EXECUTE CreateEmployee @EmployeeId=7,@CompanyId=1,@RoleId=2,@JoiningDate='8/14/2022'
 EXECUTE CreateEmployee @EmployeeId=8,@CompanyId=1,@RoleId=3,@JoiningDate='8/30/2022'
