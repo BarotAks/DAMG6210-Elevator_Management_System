@@ -334,19 +334,12 @@ END
 
 ------------------------- PROCEDURE: CreateSaleRandomizer ------------------------
 
+EXECUTE CreateSaleRandomizer
+
+GO
 CREATE OR ALTER PROCEDURE CreateSaleRandomizer 
-      @SerialNo INT,
-      @Quantity INT, 
-      @SalesRepID INT,
-      @BillingCycle VARCHAR(255),
-      @Discount INT,
-	@ContractDate DATE,
-	@CustomerID INT,
-	@Tenure NUMERIC,
-	@BillingMode VARCHAR(255)
 AS
 BEGIN
-
       -- Get SalesRep
       DECLARE @SalesRepID INT = (SELECT TOP 1 EmployeeId FROM Person.Employee WHERE RoleID = 4 ORDER BY NEWID())
       
@@ -355,8 +348,99 @@ BEGIN
             SELECT CompanyId FROM Person.Employee WHERE EmployeeId = @SalesRepID
       )
 
+      -- Get Unit
+      DECLARE @RegionID INT = (
+
+            SELECT TOP 1
+                  cmp.RegionID 
+            FROM Client.Company cmp
+            WHERE 
+                  cmp.CompanyId = @CompanyId
+            ORDER BY NEWID()
+            );
+
+      DECLARE @TerritoryID INT = (
+            SELECT TOP 1
+                  TerritoryID 
+            FROM 
+                  Territory.Territory ter
+            INNER JOIN Territory.Region reg ON reg.RegionID = ter.RegionID
+            WHERE 
+                  reg.RegionID = @RegionID
+            ORDER BY NEWID()
+            );
+
+      DECLARE @RouteID INT = (
+            SELECT TOP 1
+                  RouteID 
+            FROM 
+                  Territory.Route [route]
+            INNER JOIN Territory.Territory ter ON ter.TerritoryID = [route].TerritoryID
+            WHERE 
+                  ter.TerritoryID = @TerritoryID
+            ORDER BY NEWID()
+            );
+      
+      DECLARE @BuildingId INT = (
+            SELECT TOP 1
+                  BuildingID 
+            FROM 
+                  Territory.Building [build]
+            INNER JOIN Territory.Route [route] ON [route].RouteID = [build].RouteID
+            WHERE 
+                  [route].RouteID = @RouteID
+            ORDER BY NEWID()
+            );
+      
+      DECLARE @SerialNo INT = (
+            SELECT TOP 1
+                  SerialNo 
+            FROM 
+                  Contract.Unit [unit]
+            INNER JOIN Territory.Building [build] ON [build].BuildingID = [unit].BuildingID
+            WHERE 
+                  [build].BuildingID = 1--@BuildingId
+            ORDER BY NEWID()
+            );
+
       -- Get Customer
       DECLARE @CustomerID INT = (SELECT TOP 1 CustomerID FROM Person.Customer WHERE CompanyId <> @CompanyId ORDER BY NEWID())
+
+      DECLARE @Discount INT = (SELECT RAND()*(10-5)+5);
+
+      DECLARE @Quantity INT = (SELECT RAND()*(10-5)+5);
+
+      -- Billing cycle
+      CREATE TABLE #BillingCycle (BillingCycle VARCHAR(255))
+
+      --Inserting data into the local temp table
+      INSERT INTO #BillingCycle Values('Monthly');  
+      INSERT INTO #BillingCycle Values('Half Yearly'); 
+      INSERT INTO #BillingCycle Values('Yearly');  
+      INSERT INTO #BillingCycle Values('Quarterly'); 
+
+      DECLARE @BillingCycle VARCHAR(255) = (SELECT TOP 1 BillingCycle FROM #BillingCycle ORDER BY NEWID());
+
+      -- Billing cycle
+      CREATE TABLE #BillingMode (BillingMode VARCHAR(255))
+
+      --Inserting data into the local temp table
+      INSERT INTO #BillingMode Values('Advance');  
+      INSERT INTO #BillingMode Values('Arrears'); 
+
+      DECLARE @BillingMode VARCHAR(255) = (SELECT TOP 1 BillingMode FROM #BillingMode ORDER BY NEWID());
+
+      DECLARE @Tenure NUMERIC = (SELECT RAND()*(12-1)+1);
+
+      -- Set Contract date
+      DECLARE @ContractDate DATE;-- = GETDATE();
+      DECLARE @StartDate AS date;
+      DECLARE @EndDate AS date;
+
+      SELECT @StartDate = '01/01/2021', -- Date Format - DD/MM/YYY
+             @EndDate   = '12/31/2022';
+
+      SET @ContractDate = (SELECT DATEADD(DAY, RAND(CHECKSUM(NEWID()))*(1+DATEDIFF(DAY, @StartDate, @EndDate)),@StartDate) AS 'SalesDate');
 
       -- Insert data into Sale
       INSERT INTO Contract.Sale
@@ -386,7 +470,6 @@ BEGIN
                   @companyId
             )
 END
+GO
 
-
-EXECUTE CreateSale 3,2,2,'Monthly',10,'12/29/2022',11,12,'Advance'
-SELECT * FROM dbo.ActiveCallbacks
+SELECT * FROM Contract.Sale ORDER BY SaleId DESC
