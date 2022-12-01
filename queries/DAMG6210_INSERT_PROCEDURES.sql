@@ -14,14 +14,6 @@ INSERT INTO [Contract].[Unit]
            ,@BuildingID)
 GO
 
--- Test
-
--- EXECUTE InsertContractUnit
---     @ProductId=4,
---     @IsActive=0,
---     @BuildingID=1
--- GO
-
 -------------------------- PROCEDURE: InsertRoleDetails ------------------------
 
 
@@ -35,10 +27,6 @@ INSERT INTO [Person].[Role]
            (@Position)
 GO
 
--- Test
--- EXECUTE InsertRoleDetails
---     @Position='Area Manager'   
--- GO
 
 ------------------------ PROCEDURE: InsertTerritoryBuilding-------------------------
 
@@ -56,130 +44,6 @@ CREATE OR ALTER PROCEDURE InsertTerritoryBuilding @StreetNumber int,@Address1 va
   ,@Address2
   ,@RouteID)
  GO
-
-
--- Test
--- EXECUTE InsertTerritoryBuilding
---   @StreetNumber=111,
---   @Address1='42 People Street',
---   @Address2='Texas',
---   @RouteID=3
---  GO
--- EXECUTE InsertTerritoryBuilding
---   @StreetNumber=68,
---   @Address1='34 Wigglesworth',
---   @Address2='Boston,MA',
---   @RouteID=2
---  GO
--- EXECUTE InsertTerritoryBuilding
---   @StreetNumber=232,
---   @Address1='DayStreet Street',
---   @Address2='Boston,MA',
---   @RouteID=1
---  GO
--- EXECUTE InsertTerritoryBuilding
---   @StreetNumber=68,
---   @Address1='Hungtington Avenue',
---   @Address2='Florida',
---   @RouteID=3
---  GO
---  EXECUTE InsertTerritoryBuilding
---   @StreetNumber=452,
---   @Address1='Alpine Street',
---   @Address2='Austin',
---   @RouteID=2
---  GO
--- EXECUTE InsertTerritoryBuilding
---   @StreetNumber=68,
---   @Address1='456 JVue',
---   @Address2='Houston',
---   @RouteID=1
---  GO
--- EXECUTE InsertTerritoryBuilding
---   @StreetNumber=345,
---   @Address1='Mission Main',
---   @Address2='Illionis',
---   @RouteID=1
---  GO
--- EXECUTE InsertTerritoryBuilding
---   @StreetNumber=565,
---   @Address1='Mission Hill',
---   @Address2='New Jersey',
---   @RouteID=4
---  GO
--- EXECUTE InsertTerritoryBuilding
---   @StreetNumber=534,
---   @Address1='34 Ridge',
---   @Address2='New York',
---   @RouteID=4
---  GO
--- EXECUTE InsertTerritoryBuilding
---   @StreetNumber=467,
---   @Address1='23 Pimpoli Street',
---   @Address2='Blue Mountains,New Hampshire',
---   @RouteID=4
---  GO
---  -----------------
---  EXECUTE InsertTerritoryBuilding
---   @StreetNumber=454,
---   @Address1='345 Roxbury',
---   @Address2='New Brunswick',
---   @RouteID=5
---  GO
--- EXECUTE InsertTerritoryBuilding
---   @StreetNumber=345,
---   @Address1='782 Washington Ave',
---   @Address2='California,San Fransico',
---   @RouteID=5
---  GO
--- EXECUTE InsertTerritoryBuilding
---   @StreetNumber=89,
---   @Address1='355 MinionLand',
---   @Address2='Disney World,Florida',
---   @RouteID=5
---  GO
--- EXECUTE InsertTerritoryBuilding
---   @StreetNumber=667,
---   @Address1='45 Illis Street',
---   @Address2='Arizona',
---   @RouteID=6
---  GO
---  EXECUTE InsertTerritoryBuilding
---   @StreetNumber=2,
---   @Address1='356 Oslin Apt',
---   @Address2='Pipor,Maine',
---   @RouteID=6
---  GO
--- EXECUTE InsertTerritoryBuilding
---   @StreetNumber=456,
---   @Address1='355 Persian Pit',
---   @Address2='Pinge,Portland',
---   @RouteID=6
---  GO
--- EXECUTE InsertTerritoryBuilding
---   @StreetNumber=345,
---   @Address1='345 Mission Main',
---   @Address2='Sam Island,Georgia',
---   @RouteID=7
---  GO
--- EXECUTE InsertTerritoryBuilding
---   @StreetNumber=86,
---   @Address1='24 Poplin Street',
---   @Address2='Connecticut',
---   @RouteID=7
---  GO
--- EXECUTE InsertTerritoryBuilding
---   @StreetNumber=930,
---   @Address1='34 Rehab Street',
---   @Address2='Tins,Ohai',
---   @RouteID=7
---  GO
--- EXECUTE InsertTerritoryBuilding
---   @StreetNumber=67,
---   @Address1='454 Opppo Street',
---   @Address2='Blue Ridge,Utai',
---   @RouteID=8
---  GO
 
 ------------------------- PROCEDURE: CreateEmployee ------------------------
 
@@ -233,14 +97,7 @@ INSERT INTO [Person].[Customer]
 
 GO
 
--- Test
--- EXECUTE CreateCustomer @CustomerId=4,@CompanyId=1
-
-
 ------------------------- PROCEDURE: RegisterCallback ------------------------
-
---SELECT * FROM Callback.Callback
---SELECT * FROM Territory.Building
 
 GO
 CREATE OR ALTER PROCEDURE RegisterCallback @SerialNo INT
@@ -290,11 +147,11 @@ BEGIN
             )
       VALUES
             (
-                  [@RouteId],
-                  [@EmployeeId],
-                  [@StatusID],
-                  [@CallbackDate],
-                  [@SerialNo]
+                  @RouteId,
+                  @EmployeeId,
+                  @StatusID,
+                  @CallbackDate,
+                  @SerialNo
             )
 
 END
@@ -303,15 +160,15 @@ GO
 -- Test
 -- EXECUTE CreateCustomer @CustomerId=4,@CompanyId=1
 
+------------------------- PROCEDURE: RegisterCallbackRandomizer ------------------------
 
-----------------------------------------------------------------------------------
-
-
-CREATE OR ALTER PROCEDURE RegisterCallback @SerialNo INT
+GO
+CREATE OR ALTER PROCEDURE RegisterCallbackRandomizer @SerialNo INT
 AS
-BEGIN
+SET NOCOUNT ON
 
-    -- Get Route level information
+BEGIN
+      -- Get Route level information
       DECLARE @RouteId INT;
 
       SET @RouteId = (
@@ -322,8 +179,6 @@ BEGIN
             INNER JOIN Territory.Building bldg ON bldg.BuildingID = unit.BuildingID
             WHERE SerialNo = @SerialNo
       );
-
-      -- SELECT @RouteId
 
       -- Get mechanic
       DECLARE @EmployeeId INT;
@@ -337,21 +192,23 @@ BEGIN
             WHERE 
                   emp.RoleId = 1
                   AND emp.LastDate IS NULL
+            ORDER BY NEWID()
       )
-
-      -- SELECT @EmployeeId
 
       -- Set callback status as active
       DECLARE @StatusID INT = 1;
 
-      -- SELECT @StatusID
-
       -- Set callback date as current date
-      DECLARE @CallbackDate DATE = GETDATE();
+      DECLARE @CallbackDate DATE;-- = GETDATE();
+      DECLARE @StartDate AS date;
+      DECLARE @EndDate AS date;
 
-      -- SELECT @CallbackDate
+      SELECT @StartDate = '01/01/2021', -- Date Format - DD/MM/YYY
+            @EndDate   = '12/31/2022';
 
-      INSERT INTO Callback.Callback
+      SET @CallbackDate = (SELECT DATEADD(DAY, RAND(CHECKSUM(NEWID()))*(1+DATEDIFF(DAY, @StartDate, @EndDate)),@StartDate) AS 'SalesDate');
+
+      INSERT INTO [Callback].[Callback]
             (
                   [RouteID],
                   [MechanicId],
@@ -367,10 +224,115 @@ BEGIN
                   @CallbackDate,
                   @SerialNo
             )
+
+END
+GO
+
+------------------------- PROCEDURE: CancelCallback ------------------------
+
+
+CREATE OR ALTER PROCEDURE CancelCallback @CallbackId INT
+AS
+BEGIN
+      UPDATE Callback.Callback 
+      SET 
+            StatusID = 4 
+      WHERE 
+            Callback.CallbackID = @CallbackId;
+END
+
+------------------------- PROCEDURE: CompletedCallback ------------------------
+GO
+CREATE OR ALTER PROCEDURE CompletedCallback @CallbackId INT
+AS
+BEGIN
+      UPDATE Callback.Callback 
+      SET 
+            StatusID = 2 
+      WHERE 
+            Callback.CallbackID = @CallbackId
+END
+GO
+------------------------- PROCEDURE: ClosedCallback ------------------------
+
+GO
+CREATE OR ALTER PROCEDURE ClosedCallback @CallbackId INT
+AS
+BEGIN
+      UPDATE Callback.Callback 
+      SET 
+            StatusID = 3 
+      WHERE 
+            Callback.CallbackID = @CallbackId
+END
+GO
+------------------------- PROCEDURE: CreateSale ------------------------
+
+CREATE OR ALTER PROCEDURE CreateSale 
+      @SerialNo INT,
+      @Quantity INT, 
+      @SalesRepID INT,
+      @BillingCycle VARCHAR(255),
+      @Discount INT,
+	@ContractDate DATE,
+	@CustomerID INT,
+	@Tenure NUMERIC,
+	@BillingMode VARCHAR(255)
+AS
+BEGIN
+      -- Verify SalesRep role
+      DECLARE @notFound INT = (SELECT
+            CAST(
+                  CASE 
+                        WHEN COUNT(*) = 0 
+                              THEN 1
+                              ELSE 0
+                        END AS BIT) AS [Found]  
+      FROM
+            Person.Employee emp
+      WHERE 
+            emp.EmployeeId = @SalesRepID AND
+            emp.RoleId = 4);       
+
+      IF @notFound = 1
+            RAISERROR (15600, -1, -1, 'Sales Representative not found!');
+
+      
+      -- Fetch Company ID
+      DECLARE @companyId INT = (
+            SELECT CompanyId FROM Person.Customer WHERE CustomerId = @CustomerId
+      )
+
+      -- Insert data into Sale
+      INSERT INTO Contract.Sale
+            (
+                  SerialNo,
+                  Quantity,
+                  SalesRepID,
+                  BillingCycle,
+                  Discount,
+                  ContractDate,
+                  CustomerID,
+                  Tenure,
+                  BillingMode,
+                  CompanyID
+            ) 
+            VALUES
+            (
+                  @SerialNo,
+                  @Quantity,
+                  @SalesRepID,
+                  @BillingCycle,
+                  @Discount,
+                  @ContractDate,
+                  @CustomerID,
+                  @Tenure,
+                  @BillingMode,
+                  @companyId
+            )
+
 END
 
 
---EXECUTE RegisterCallback 1
-
-
-
+EXECUTE CreateSale 3,2,2,'Monthly',10,'12/29/2022',11,12,'Advance'
+SELECT * FROM dbo.ActiveCallbacks
