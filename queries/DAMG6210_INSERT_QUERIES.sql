@@ -1,3 +1,5 @@
+USE Team_Project10;
+
 ------------------------- Country ---------------------------
 INSERT INTO Territory.Country (CountryName) VALUES ('United States');
 INSERT INTO Territory.Country (CountryName) VALUES ('United Kingdom'); 
@@ -220,10 +222,9 @@ INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddre
 INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddress,GenderID) VALUES ('Graham','Coleman','870-567-0987','12/12/1982','graham@otis.com',1);
 
 ------------------------Employee-----------------------------
-
-
-
-
+EXECUTE CreateEmployee @EmployeeId=1,@CompanyId=1,@RoleId=1,@JoiningDate='11/30/2022'
+EXECUTE CreateEmployee @EmployeeId=2,@CompanyId=1,@RoleId=3,@JoiningDate='11/30/2022'
+EXECUTE CreateEmployee @EmployeeId=3,@CompanyId=1,@RoleId=2,@JoiningDate='11/30/2022'
 
 
 ------------------------ PROCEDURE: InsertTerritoryBuilding-------------------------
