@@ -175,7 +175,7 @@ CREATE TABLE Person.Role (
 -------------------------------- TABLE: Employee ---------------------------------
 
 CREATE TABLE Person.Employee (
-    EmployeeId INT IDENTITY(1,1) PRIMARY KEY,
+    EmployeeId INT PRIMARY KEY FOREIGN KEY REFERENCES Person.Person(PersonID),
     CompanyId INT FOREIGN KEY REFERENCES Client.Company(CompanyID),
     RoleId INT FOREIGN KEY REFERENCES Person.Role(RoleId),
     JoiningDate DATE,
@@ -188,7 +188,7 @@ CREATE TABLE Person.Employee (
 -------------------------------- TABLE: Customer ---------------------------------
 
 CREATE TABLE Person.Customer(
-    CustomerId INT IDENTITY(1,1) PRIMARY KEY,
+    CustomerId INT PRIMARY KEY FOREIGN KEY REFERENCES Person.Person(PersonID),
     CompanyId INT FOREIGN KEY REFERENCES Client.Company(CompanyID)
 );
 

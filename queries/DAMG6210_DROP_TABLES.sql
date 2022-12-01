@@ -1,3 +1,4 @@
+USE Team_Project10
 DROP TABLE Callback.Callback
 DROP TABLE Callback.Status
 DROP TABLE Callback.MaintenanceJobs

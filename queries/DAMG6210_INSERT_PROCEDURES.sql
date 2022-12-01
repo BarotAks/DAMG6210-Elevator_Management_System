@@ -181,7 +181,63 @@ CREATE OR ALTER PROCEDURE InsertTerritoryBuilding @StreetNumber int,@Address1 va
 --   @RouteID=8
 --  GO
 
+------------------------- PROCEDURE: CreateEmployee ------------------------
 
+--SELECT * FROM Person.Employee
+
+GO
+CREATE OR ALTER PROCEDURE CreateEmployee @EmployeeId INT,@CompanyId INT, @RoleId INT, @JoiningDate DATE
+AS
+SET NOCOUNT ON
+
+INSERT INTO [Person].[Employee]
+           (
+            [EmployeeId],
+            [CompanyId],
+            [RoleId],
+            [JoiningDate]
+           )
+     VALUES
+           (
+            @EmployeeId,
+            @CompanyId,
+            @RoleId,
+            @JoiningDate
+           )
+
+GO
+
+-- Test
+-- EXECUTE CreateEmployee @EmployeeId=27,@CompanyId=1,@RoleId=1,@JoiningDate='11/30/2022'
+
+
+------------------------- PROCEDURE: CreateCustomer ------------------------
+
+--SELECT * FROM Person.Employee
+
+GO
+CREATE OR ALTER PROCEDURE CreateCustomer @CustomerId INT,@CompanyId INT
+AS
+SET NOCOUNT ON
+
+INSERT INTO [Person].[Employee]
+           (
+            [CustomerId],
+            [CompanyId]
+           )
+     VALUES
+           (
+            @CustomerId,
+            @CompanyId
+           )
+
+GO
+
+-- Test
+-- EXECUTE CreateEmployee @EmployeeId=27,@CompanyId=1,@RoleId=1,@JoiningDate='11/30/2022'
+
+
+----------------------------------------------------------------------------------
 
 
 
