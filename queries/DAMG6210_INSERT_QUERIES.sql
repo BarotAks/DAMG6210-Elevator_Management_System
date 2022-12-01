@@ -224,8 +224,26 @@ INSERT INTO Person.Person (FirstName,LastName,PhoneNumber,DateofBirth,EmailAddre
 ------------------------Employee-----------------------------
 EXECUTE CreateEmployee @EmployeeId=1,@CompanyId=1,@RoleId=1,@JoiningDate='11/30/2022'
 EXECUTE CreateEmployee @EmployeeId=2,@CompanyId=1,@RoleId=3,@JoiningDate='11/30/2022'
-EXECUTE CreateEmployee @EmployeeId=3,@CompanyId=1,@RoleId=2,@JoiningDate='11/30/2022'
+EXECUTE CreateEmployee @EmployeeId=3,@CompanyId=2,@RoleId=2,@JoiningDate='10/30/2022'
+EXECUTE CreateEmployee @EmployeeId=4,@CompanyId=2,@RoleId=1,@JoiningDate='10/30/2022'
+EXECUTE CreateEmployee @EmployeeId=5,@CompanyId=3,@RoleId=3,@JoiningDate='9/30/2022'
+EXECUTE CreateEmployee @EmployeeId=6,@CompanyId=3,@RoleId=2,@JoiningDate='9/30/2022'
+EXECUTE CreateEmployee @EmployeeId=7,@CompanyId=4,@RoleId=1,@JoiningDate='8/14/2022'
+EXECUTE CreateEmployee @EmployeeId=8,@CompanyId=4,@RoleId=3,@JoiningDate='8/30/2022'
+EXECUTE CreateEmployee @EmployeeId=9,@CompanyId=5,@RoleId=2,@JoiningDate='7/30/2022'
+EXECUTE CreateEmployee @EmployeeId=10,@CompanyId=5,@RoleId=2,@JoiningDate='7/30/2022'
 
+------------------------Customer-----------------------------
+EXECUTE CreateCustomer @CustomerId=11,@CompanyId=1
+EXECUTE CreateCustomer @CustomerId=12,@CompanyId=1
+EXECUTE CreateCustomer @CustomerId=13,@CompanyId=2
+EXECUTE CreateCustomer @CustomerId=14,@CompanyId=2
+EXECUTE CreateCustomer @CustomerId=15,@CompanyId=3
+EXECUTE CreateCustomer @CustomerId=16,@CompanyId=3
+EXECUTE CreateCustomer @CustomerId=17,@CompanyId=4
+EXECUTE CreateCustomer @CustomerId=18,@CompanyId=4
+EXECUTE CreateCustomer @CustomerId=19,@CompanyId=5
+EXECUTE CreateCustomer @CustomerId=20,@CompanyId=5
 
 ------------------------ PROCEDURE: InsertTerritoryBuilding-------------------------
 
@@ -352,8 +370,43 @@ EXECUTE InsertTerritoryBuilding
 
 -------------------------- PROCEDURE: InsertContractUnit ------------------------
 
-EXECUTE InsertContractUnit
-    @ProductId=4,
-    @IsActive=0,
-    @BuildingID=1
-GO
+EXECUTE InsertContractUnit @ProductId=4,@IsActive=0,@BuildingID=1
+EXECUTE InsertContractUnit @ProductId=4,@IsActive=1,@BuildingID=1
+EXECUTE InsertContractUnit @ProductId=3,@IsActive=1,@BuildingID=2
+EXECUTE InsertContractUnit @ProductId=3,@IsActive=1,@BuildingID=2
+EXECUTE InsertContractUnit @ProductId=1,@IsActive=1,@BuildingID=3
+EXECUTE InsertContractUnit @ProductId=1,@IsActive=1,@BuildingID=3
+EXECUTE InsertContractUnit @ProductId=5,@IsActive=1,@BuildingID=4
+EXECUTE InsertContractUnit @ProductId=5,@IsActive=1,@BuildingID=4
+EXECUTE InsertContractUnit @ProductId=4,@IsActive=1,@BuildingID=5
+EXECUTE InsertContractUnit @ProductId=4,@IsActive=1,@BuildingID=6
+EXECUTE InsertContractUnit @ProductId=6,@IsActive=1,@BuildingID=7
+EXECUTE InsertContractUnit @ProductId=6,@IsActive=1,@BuildingID=8
+EXECUTE InsertContractUnit @ProductId=4,@IsActive=1,@BuildingID=8
+EXECUTE InsertContractUnit @ProductId=4,@IsActive=0,@BuildingID=9
+EXECUTE InsertContractUnit @ProductId=3,@IsActive=1,@BuildingID=9
+EXECUTE InsertContractUnit @ProductId=3,@IsActive=0,@BuildingID=9
+EXECUTE InsertContractUnit @ProductId=4,@IsActive=1,@BuildingID=10
+EXECUTE InsertContractUnit @ProductId=8,@IsActive=1,@BuildingID=10
+EXECUTE InsertContractUnit @ProductId=9,@IsActive=1,@BuildingID=11
+EXECUTE InsertContractUnit @ProductId=9,@IsActive=1,@BuildingID=12
+
+-------------------------- PROCEDURE: RegisterCallback ------------------------
+
+EXECUTE RegisterCallback 1
+EXECUTE RegisterCallback 2
+EXECUTE RegisterCallback 3
+EXECUTE RegisterCallback 2
+EXECUTE RegisterCallback 3
+EXECUTE RegisterCallback 1
+EXECUTE RegisterCallback 1
+EXECUTE RegisterCallback 2
+EXECUTE RegisterCallback 2
+EXECUTE RegisterCallback 2
+EXECUTE RegisterCallback 4
+EXECUTE RegisterCallback 4
+EXECUTE RegisterCallback 5
+EXECUTE RegisterCallback 5
+EXECUTE RegisterCallback 5
+EXECUTE RegisterCallback 5
+

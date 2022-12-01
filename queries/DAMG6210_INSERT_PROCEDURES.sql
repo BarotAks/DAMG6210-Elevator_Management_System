@@ -220,7 +220,7 @@ CREATE OR ALTER PROCEDURE CreateCustomer @CustomerId INT,@CompanyId INT
 AS
 SET NOCOUNT ON
 
-INSERT INTO [Person].[Employee]
+INSERT INTO [Person].[Customer]
            (
             [CustomerId],
             [CompanyId]
@@ -234,14 +234,143 @@ INSERT INTO [Person].[Employee]
 GO
 
 -- Test
--- EXECUTE CreateEmployee @EmployeeId=27,@CompanyId=1,@RoleId=1,@JoiningDate='11/30/2022'
+-- EXECUTE CreateCustomer @CustomerId=4,@CompanyId=1
+
+
+------------------------- PROCEDURE: RegisterCallback ------------------------
+
+--SELECT * FROM Callback.Callback
+--SELECT * FROM Territory.Building
+
+GO
+CREATE OR ALTER PROCEDURE RegisterCallback @SerialNo INT
+AS
+SET NOCOUNT ON
+
+BEGIN
+      -- Get Route level information
+      DECLARE @RouteId INT;
+
+      SET @RouteId = (
+            SELECT 
+                  RouteID 
+            FROM 
+                  Contract.Unit unit
+            INNER JOIN Territory.Building bldg ON bldg.BuildingID = unit.BuildingID
+            WHERE SerialNo = @SerialNo
+      );
+
+      -- Get mechanic
+      DECLARE @EmployeeId INT;
+
+      SET @EmployeeId = (
+            SELECT 
+                  TOP 1
+                  emp.EmployeeId
+            FROM 
+                  Person.Employee emp
+            WHERE 
+                  emp.RoleId = 1
+                  AND emp.LastDate IS NULL
+      )
+
+      -- Set callback status as active
+      DECLARE @StatusID INT = 1;
+
+      -- Set callback date as current date
+      DECLARE @CallbackDate DATE = GETDATE();
+
+      INSERT INTO [Callback].[Callback]
+            (
+                  [RouteID],
+                  [MechanicId],
+                  [StatusId],
+                  [CallbackDate],
+                  [SerialNumber]
+            )
+      VALUES
+            (
+                  [@RouteId],
+                  [@EmployeeId],
+                  [@StatusID],
+                  [@CallbackDate],
+                  [@SerialNo]
+            )
+
+END
+GO
+
+-- Test
+-- EXECUTE CreateCustomer @CustomerId=4,@CompanyId=1
 
 
 ----------------------------------------------------------------------------------
 
 
+CREATE OR ALTER PROCEDURE RegisterCallback @SerialNo INT
+AS
+BEGIN
+
+    -- Get Route level information
+      DECLARE @RouteId INT;
+
+      SET @RouteId = (
+            SELECT 
+                  RouteID 
+            FROM 
+                  Contract.Unit unit
+            INNER JOIN Territory.Building bldg ON bldg.BuildingID = unit.BuildingID
+            WHERE SerialNo = @SerialNo
+      );
+
+      -- SELECT @RouteId
+
+      -- Get mechanic
+      DECLARE @EmployeeId INT;
+
+      SET @EmployeeId = (
+            SELECT 
+                  TOP 1
+                  emp.EmployeeId
+            FROM 
+                  Person.Employee emp
+            WHERE 
+                  emp.RoleId = 1
+                  AND emp.LastDate IS NULL
+      )
+
+      -- SELECT @EmployeeId
+
+      -- Set callback status as active
+      DECLARE @StatusID INT = 1;
+
+      -- SELECT @StatusID
+
+      -- Set callback date as current date
+      DECLARE @CallbackDate DATE = GETDATE();
+
+      -- SELECT @CallbackDate
+
+      INSERT INTO Callback.Callback
+            (
+                  [RouteID],
+                  [MechanicId],
+                  [StatusId],
+                  [CallbackDate],
+                  [SerialNumber]
+            )
+      VALUES
+            (
+                  @RouteId,
+                  @EmployeeId,
+                  @StatusID,
+                  @CallbackDate,
+                  @SerialNo
+            )
+END
 
 
+--EXECUTE RegisterCallback 1
 
 
 
