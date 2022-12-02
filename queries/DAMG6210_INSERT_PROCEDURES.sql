@@ -334,7 +334,7 @@ END
 
 ------------------------- PROCEDURE: CreateSaleRandomizer ------------------------
 
-EXECUTE CreateSaleRandomizer
+-- EXECUTE CreateSaleRandomizer
 
 GO
 CREATE OR ALTER PROCEDURE CreateSaleRandomizer 
@@ -472,4 +472,124 @@ BEGIN
 END
 GO
 
-SELECT * FROM Contract.Sale ORDER BY SaleId DESC
+------------------------- PROCEDURE: InsertMaintenanceJobs ------------------------
+
+GO
+--DROP TRIGGER [Contract].[InsertMaintenanceJobs]
+CREATE OR ALTER TRIGGER InsertMaintenanceJobs
+ON Contract.Sale
+AFTER 
+    INSERT AS
+BEGIN
+      SET NOCOUNT ON;
+
+      -- CREATE TABLE [sale] (
+      --       serialNo INT,
+      --       startDate DATE,
+      --       companyID INT
+      -- );
+
+      -- INSERT INTO [sale]     
+            -- SELECT 
+            --       INSERTED.SerialNo [serialNo],
+            --       INSERTED.ContractDate [startDate],
+            --       INSERTED.companyID [companyID]  
+            -- INTO [sale]
+            -- FROM INSERTED
+            
+
+      -- Get EmployeeID
+      DECLARE @employeeID INT = (SELECT TOP 1 emp.EmployeeID FROM Person.Employee emp WHERE emp.CompanyID = (SELECT companyID FROM INSERTED));
+
+      -- Get RouteID
+      DECLARE @routeID INT = (
+            SELECT 
+                  [build].RouteID 
+            FROM Contract.Unit [unit] 
+            INNER JOIN Territory.Building [build] ON [build].BuildingId = [unit].BuildingId
+            WHERE 
+                  [unit].SerialNo = (SELECT serialNo FROM INSERTED)
+            )
+
+      -- Get visit date
+      DECLARE @visitDate DATE = (SELECT DATEADD(month, DATEDIFF(month, 0, (SELECT contractDate FROM INSERTED)), 0) AS StartOfMonth)
+
+      -- Get serial no
+      DECLARE @serialNo INT = (SELECT serialNo FROM INSERTED)
+
+      DECLARE @startMonth INT = (SELECT MONTH(@visitDate))
+      WHILE ( @startMonth <> 13)
+      BEGIN
+            INSERT INTO Callback.MaintenanceJobs (EmployeeID, RouteID, VisitDate, JobStatus, SerialNumber ) VALUES (@employeeID, @routeID, @visitDate, 1, @serialNo);
+            SET @visitDate = DATEADD(MONTH, 1, @visitDate)
+            SET @startMonth = @startMonth + 1;
+      END
+
+END
+GO
+
+------------------------- PROCEDURE: CompletedMaintenanceJob ------------------------
+
+GO
+CREATE OR ALTER PROCEDURE CompletedMaintenanceJob @JobId INT
+AS
+BEGIN
+      UPDATE Callback.MaintenanceJobs 
+      SET 
+            JobStatus = 2 
+      WHERE 
+            JobId = @JobId
+END
+GO
+
+------------------------- PROCEDURE: CancelMaintenanceJob ------------------------
+
+GO
+CREATE OR ALTER PROCEDURE CancelMaintenanceJob @JobId INT
+AS
+BEGIN
+      UPDATE Callback.MaintenanceJobs
+      SET 
+            JobStatus = 4 
+      WHERE 
+            mj.JobId = @JobId
+END
+GO
+
+SELECT * FROM Callback.Status
+
+------------------------- PROCEDURE: CreateRegionRandomizer ------------------------
+
+GO
+CREATE OR ALTER PROCEDURE CreateRegionRandomizer
+AS
+BEGIN
+      -- Fetch CountryCode
+      DECLARE @CountryCode INT = (
+            SELECT  TOP 1 CountryCode FROM Territory.Country WHERE CountryCode <> 1 ORDER BY NEWID()
+      );
+      -- Region
+      CREATE TABLE #Region (RegionName VARCHAR(30))
+      --Inserting data into the local temp table
+      INSERT INTO #Region Values('Southwest');
+      INSERT INTO #Region Values('Northeast');
+      INSERT INTO #Region Values('Northwest');
+      INSERT INTO #Region Values('Southeast');
+      INSERT INTO #Region Values('North');
+      INSERT INTO #Region Values('South');
+      INSERT INTO #Region Values('East');
+      INSERT INTO #Region Values('West');
+      DECLARE @RegionName VARCHAR(30) = (SELECT TOP 1 RegionName FROM #Region ORDER BY NEWID());
+      -- Insert data into Region
+      INSERT INTO Territory.Region
+            (
+                  RegionName,
+                  CountryCode
+            )
+            VALUES
+            (
+                  @RegionName,
+                  @CountryCode
+            )
+END
+GO

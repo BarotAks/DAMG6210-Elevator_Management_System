@@ -1,23 +1,24 @@
--- SELECT * FROM Callback.Callback
-SELECT * FROM Callback.Status
--- SELECT * FROM Callback.MaintenanceJobs
--- SELECT * FROM Person.UserDetails
--- SELECT * FROM Contract.Sale
-SELECT * FROM Person.Customer
-SELECT * FROM Person.Employee
-SELECT * FROM Person.Person
-SELECT * FROM Person.Role
-SELECT * FROM Person.Gender
-SELECT * FROM Contract.Unit
-SELECT * FROM Product.Product
-SELECT * FROM Product.ProductType
-SELECT * FROM Territory.Building
-SELECT * FROM Client.Company
-SELECT * FROM Client.Organization
-SELECT * FROM Territory.Route
-SELECT * FROM Territory.Territory
-SELECT * FROM Territory.Region
-SELECT * FROM Territory.Country
+USE Team_Project10
+SELECT COUNT(*) AS [Callback] FROM Callback.Callback
+SELECT COUNT(*) AS [Status] FROM Callback.Status
+SELECT COUNT(*) AS [MaintenanceJobs] FROM Callback.MaintenanceJobs
+SELECT COUNT(*) AS [UserDetails] FROM Person.UserDetails
+SELECT COUNT(*) AS [Sale] FROM Contract.Sale
+SELECT COUNT(*) AS [Customer] FROM Person.Customer
+SELECT COUNT(*) AS [Employee] FROM Person.Employee
+SELECT COUNT(*) AS [Person] FROM Person.Person
+SELECT COUNT(*) AS [Role] FROM Person.Role
+SELECT COUNT(*) AS [Gender] FROM Person.Gender
+SELECT COUNT(*) AS [Unit] FROM Contract.Unit
+SELECT COUNT(*) AS [Product] FROM Product.Product
+SELECT COUNT(*) AS [ProductType] FROM Product.ProductType
+SELECT COUNT(*) AS [Building] FROM Territory.Building
+SELECT COUNT(*) AS [Company] FROM Client.Company
+SELECT COUNT(*) AS [Organization] FROM Client.Organization
+SELECT COUNT(*) AS [Route] FROM Territory.Route
+SELECT COUNT(*) AS [Territory] FROM Territory.Territory
+SELECT COUNT(*) AS [Region] FROM Territory.Region
+SELECT COUNT(*) AS [Country] FROM Territory.Country
 
 
 
