@@ -1,7 +1,7 @@
 USE Team_Project10
 DROP TABLE Callback.Callback
-DROP TABLE Callback.Status
 DROP TABLE Callback.MaintenanceJobs
+DROP TABLE Callback.Status
 DROP TABLE Person.UserDetails
 DROP TABLE Contract.Sale
 DROP TABLE Person.Customer
@@ -19,6 +19,11 @@ DROP TABLE Territory.Route
 DROP TABLE Territory.Territory
 DROP TABLE Territory.Region
 DROP TABLE Territory.Country
+
+CLOSE SYMMETRIC KEY PasswordSymmetricKey;
+DROP SYMMETRIC KEY PasswordSymmetricKey;
+DROP CERTIFICATE PasswordCertificate;
+DROP MASTER KEY;
 
 
 

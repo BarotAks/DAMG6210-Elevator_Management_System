@@ -178,6 +178,18 @@ EXECUTE CreateCustomer @CustomerId=16,@CompanyId=3
 EXECUTE CreateCustomer @CustomerId=17,@CompanyId=4
 EXECUTE CreateCustomer @CustomerId=18,@CompanyId=4
 
+----------------------- UserDetails --------------------------
+INSERT INTO Person.UserDetails (LoginId, EncryptedPassword,PersonId ) VALUES ('kinjalthakkar14' , EncryptByKey(Key_GUID(N'PasswordSymmetricKey'), convert(varbinary, 'PassTS1')),4);
+INSERT INTO Person.UserDetails (LoginId, EncryptedPassword,PersonId ) VALUES ('akshitabarot' , EncryptByKey(Key_GUID(N'PasswordSymmetricKey'), convert(varbinary, 'akshita')),1);
+INSERT INTO Person.UserDetails (LoginId, EncryptedPassword,PersonId ) VALUES ('siddhantkohli' , EncryptByKey(Key_GUID(N'PasswordSymmetricKey'), convert(varbinary, 'siddhant')),2);
+INSERT INTO Person.UserDetails (LoginId, EncryptedPassword,PersonId ) VALUES ('aniruddhatambe' , EncryptByKey(Key_GUID(N'PasswordSymmetricKey'), convert(varbinary, 'aniruddha')),3);
+INSERT INTO Person.UserDetails (LoginId, EncryptedPassword,PersonId ) VALUES ('forumbhatt' , EncryptByKey(Key_GUID(N'PasswordSymmetricKey'), convert(varbinary, 'forum')),5);
+INSERT INTO Person.UserDetails (LoginId, EncryptedPassword,PersonId ) VALUES ('vishwashah' , EncryptByKey(Key_GUID(N'PasswordSymmetricKey'), convert(varbinary, 'vishwa')),6);
+INSERT INTO Person.UserDetails (LoginId, EncryptedPassword,PersonId ) VALUES ('rishabhmehra' , EncryptByKey(Key_GUID(N'PasswordSymmetricKey'), convert(varbinary, 'rishabh')),7);
+INSERT INTO Person.UserDetails (LoginId, EncryptedPassword,PersonId ) VALUES ('mehulsharma' , EncryptByKey(Key_GUID(N'PasswordSymmetricKey'), convert(varbinary, 'mehul')),8);
+INSERT INTO Person.UserDetails (LoginId, EncryptedPassword,PersonId ) VALUES ('kateteyler' , EncryptByKey(Key_GUID(N'PasswordSymmetricKey'), convert(varbinary, 'teyler')),9);
+INSERT INTO Person.UserDetails (LoginId, EncryptedPassword,PersonId ) VALUES ('roberttate' , EncryptByKey(Key_GUID(N'PasswordSymmetricKey'), convert(varbinary, 'robert')),10);
+
 
 ------------------------ PROCEDURE: InsertTerritoryBuilding-------------------------
 EXECUTE InsertTerritoryBuilding @StreetNumber=34,@Address1='Wigglesworth',@Address2='Boston,MA', @RouteID=2
@@ -194,74 +206,69 @@ EXECUTE InsertTerritoryBuilding @StreetNumber=168, @Address1='Woodrow Avenue',@A
 
 -------------------------- PROCEDURE: InsertContractUnit ------------------------
 
-EXECUTE InsertContractUnit @ProductId=4,@IsActive=1,@BuildingID=1
-EXECUTE InsertContractUnit @ProductId=2,@IsActive=1,@BuildingID=1
-EXECUTE InsertContractUnit @ProductId=2,@IsActive=1,@BuildingID=1
-EXECUTE InsertContractUnit @ProductId=3,@IsActive=1,@BuildingID=1
-EXECUTE InsertContractUnit @ProductId=3,@IsActive=1,@BuildingID=1
-EXECUTE InsertContractUnit @ProductId=5,@IsActive=1,@BuildingID=2
-EXECUTE InsertContractUnit @ProductId=5,@IsActive=1,@BuildingID=2
-EXECUTE InsertContractUnit @ProductId=5,@IsActive=1,@BuildingID=2
-EXECUTE InsertContractUnit @ProductId=2,@IsActive=1,@BuildingID=2
-EXECUTE InsertContractUnit @ProductId=2,@IsActive=1,@BuildingID=2
-
--------------------------- Callback ------------------------
-
 DECLARE @Counter INT 
 SET @Counter=1
-WHILE ( @Counter <= 150)
+WHILE ( @Counter <= 1000)
 BEGIN
-    EXECUTE RegisterCallbackRandomizer 1
-    SET @Counter = @Counter + 1;
-END
-
-SET @Counter=1
-WHILE ( @Counter <= 100)
-BEGIN
-    EXECUTE RegisterCallbackRandomizer 2
-    SET @Counter = @Counter + 1;
-END
-
-SET @Counter=1
-WHILE ( @Counter <= 75)
-BEGIN
-    EXECUTE RegisterCallbackRandomizer 3
-    SET @Counter = @Counter + 1;
-END
-
-SET @Counter = 14 
-WHILE ( @Counter <= 25)
-BEGIN
-    EXECUTE CancelCallback @Counter
-    SET @Counter = @Counter + 1;
-END
-
-SET @Counter = 26 
-WHILE ( @Counter <= 31)
-BEGIN
-    EXECUTE CompletedCallback @Counter
-    SET @Counter = @Counter + 1;
-END
-
-SET @Counter = 32
-WHILE ( @Counter <= 42)
-BEGIN
-    EXECUTE ClosedCallback @Counter
+    DECLARE @prodId INT = (SELECT TOP 1 ProductId FROM Product.Product ORDER BY NEWID());
+    DECLARE @isActive INT = (SELECT RAND(1));
+    DECLARE @buildingId INT = (SELECT TOP 1 BuildingId FROM Territory.Building ORDER BY NEWID());
+    EXECUTE InsertContractUnit @ProductId=@prodId,@IsActive=1,@BuildingID=@buildingId
     SET @Counter = @Counter + 1;
 END
 
 -------------------------- Callback ------------------------
 
+SET @Counter=1
+WHILE ( @Counter <= 1000)
+BEGIN
+    DECLARE @serialNo INT = (SELECT TOP 1 SerialNo FROM Contract.Unit ORDER BY NEWID());
+    EXECUTE RegisterCallbackRandomizer @serialNo
+    SET @Counter = @Counter + 1;
+END
+
+SET @Counter=1
+WHILE ( @Counter <= 200)
+BEGIN
+    DECLARE @callbackId INT = (SELECT TOP 1 CallbackId FROM Callback.Callback ORDER BY NEWID());
+    EXECUTE CancelCallback @callbackId
+
+    SET @callbackId = (SELECT TOP 1 CallbackId FROM Callback.Callback ORDER BY NEWID());
+    EXECUTE CompletedCallback @callbackId
+
+    SET @callbackId = (SELECT TOP 1 CallbackId FROM Callback.Callback ORDER BY NEWID());
+    EXECUTE ClosedCallback @callbackId
+
+    SET @Counter = @Counter + 1;
+END
+
+-------------------------- Sale ------------------------
+
 SET @Counter = 1
-WHILE ( @Counter <= 105)
+WHILE ( @Counter <= 100)
 BEGIN
     EXECUTE CreateSaleRandomizer
     SET @Counter = @Counter + 1;
+END         
+
+-------------------------- MaintenanceJob ------------------------
+
+SET @Counter = 1
+WHILE ( @Counter <= 100)
+BEGIN
+    DECLARE @jobId INT = (SELECT TOP 1 JobID FROM Callback.MaintenanceJobs ORDER BY NEWID())
+    EXECUTE CompletedMaintenanceJob @jobId
+
+    SET @jobId = (SELECT TOP 1 JobID FROM Callback.MaintenanceJobs ORDER BY NEWID())
+    EXECUTE CancelMaintenanceJob @jobId
+
+    SET @Counter = @Counter + 1;
+END     
+
+
+SET @Counter = 1
+WHILE ( @Counter <= 20)
+BEGIN
+    EXECUTE CreateRegionRandomizer
+    SET @Counter = @Counter + 1;
 END
-
-
-SELECT * FROM Contract.Sale
-
-
-
-

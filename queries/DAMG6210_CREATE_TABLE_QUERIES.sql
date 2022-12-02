@@ -270,6 +270,62 @@ CREATE TABLE Contract.Sale(
 
 -------------------------------------------------------------------------------------
 
+GO
+--DROP TRIGGER [Contract].[InsertMaintenanceJobs]
+CREATE OR ALTER TRIGGER InsertMaintenanceJobs
+ON Contract.Sale
+AFTER 
+    INSERT AS
+BEGIN
+      SET NOCOUNT ON;
+
+      -- CREATE TABLE [sale] (
+      --       serialNo INT,
+      --       startDate DATE,
+      --       companyID INT
+      -- );
+
+      -- INSERT INTO [sale]     
+            -- SELECT 
+            --       INSERTED.SerialNo [serialNo],
+            --       INSERTED.ContractDate [startDate],
+            --       INSERTED.companyID [companyID]  
+            -- INTO [sale]
+            -- FROM INSERTED
+            
+
+      -- Get EmployeeID
+      DECLARE @employeeID INT = (SELECT TOP 1 emp.EmployeeID FROM Person.Employee emp WHERE emp.CompanyID = (SELECT companyID FROM INSERTED) AND emp.RoleId = 1 ORDER BY NEWID());
+
+      -- Get RouteID
+      DECLARE @routeID INT = (
+            SELECT 
+                  [build].RouteID 
+            FROM Contract.Unit [unit] 
+            INNER JOIN Territory.Building [build] ON [build].BuildingId = [unit].BuildingId
+            WHERE 
+                  [unit].SerialNo = (SELECT serialNo FROM INSERTED)
+            )
+
+      -- Get visit date
+      DECLARE @visitDate DATE = (SELECT DATEADD(month, DATEDIFF(month, 0, (SELECT contractDate FROM INSERTED)), 0) AS StartOfMonth)
+
+      -- Get serial no
+      DECLARE @serialNo INT = (SELECT serialNo FROM INSERTED)
+
+      DECLARE @startMonth INT = (SELECT MONTH(@visitDate))
+      WHILE ( @startMonth <> 13)
+      BEGIN
+            INSERT INTO Callback.MaintenanceJobs (EmployeeID, RouteID, VisitDate, JobStatus, SerialNumber ) VALUES (@employeeID, @routeID, @visitDate, 1, @serialNo);
+            SET @visitDate = DATEADD(MONTH, 1, @visitDate)
+            SET @startMonth = @startMonth + 1;
+      END
+
+END
+GO
+
+-------------------------------------------------------------------------------------
+
 ------------- Schema: Contract -------------
 
 -- Go
@@ -313,12 +369,13 @@ CREATE TABLE Callback.MaintenanceJobs
  EmployeeID INT,
  RouteID INT,
  VisitDate DATE,
- JobStatus BIT,
+ JobStatus INT,
  SerialNumber INT,
  PRIMARY KEY (JobID),
  FOREIGN KEY (RouteID) REFERENCES Territory.Route(RouteID) ,
  FOREIGN KEY (EmployeeID) REFERENCES Person.Employee(EmployeeId),
- FOREIGN KEY (SerialNumber) REFERENCES Contract.Unit(SerialNo)
+ FOREIGN KEY (SerialNumber) REFERENCES Contract.Unit(SerialNo),
+ FOREIGN KEY (JobStatus) REFERENCES Callback.Status(StatusId)
 );
 
 -------------------------------------------------------------------------------------
