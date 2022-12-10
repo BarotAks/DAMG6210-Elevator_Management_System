@@ -191,6 +191,18 @@ CREATE TABLE Person.Person (
     GenderID INT FOREIGN KEY REFERENCES Person.Gender(GenderID)
 );
 
+GO
+CREATE FUNCTION GetAge  
+(@DateOfBirth SMALLINT) 
+RETURNS INT 
+AS 
+BEGIN
+    DECLARE @age INT
+    SET @age = (SELECT CAST(DATEDIFF(hour,@DateOfBirth,GETDATE())/8766 AS INT));
+    RETURN @age;
+END
+GO 
+
 -------------------------------------------------------------------------------------
 
 -------------------------------- TABLE: Role ---------------------------------

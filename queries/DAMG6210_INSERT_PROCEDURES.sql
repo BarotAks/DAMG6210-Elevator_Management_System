@@ -1,6 +1,6 @@
-
+USE Team_Project10;
 -------------------------- PROCEDURE: InsertContractUnit ------------------------
-
+GO
 CREATE OR ALTER PROCEDURE InsertContractUnit @ProductId int, @IsActive bit,@BuildingID int
 AS
 SET NOCOUNT ON
@@ -203,7 +203,7 @@ BEGIN
       DECLARE @StartDate AS date;
       DECLARE @EndDate AS date;
 
-      SELECT @StartDate = '01/01/2021', -- Date Format - DD/MM/YYY
+      SELECT @StartDate = '01/01/2018', -- Date Format - DD/MM/YYY
             @EndDate   = '12/31/2022';
 
       SET @CallbackDate = (SELECT DATEADD(DAY, RAND(CHECKSUM(NEWID()))*(1+DATEDIFF(DAY, @StartDate, @EndDate)),@StartDate) AS 'SalesDate');
@@ -437,7 +437,7 @@ BEGIN
       DECLARE @StartDate AS date;
       DECLARE @EndDate AS date;
 
-      SELECT @StartDate = '01/01/2021', -- Date Format - DD/MM/YYY
+      SELECT @StartDate = '01/01/2018', -- Date Format - DD/MM/YYY
              @EndDate   = '12/31/2022';
 
       SET @ContractDate = (SELECT DATEADD(DAY, RAND(CHECKSUM(NEWID()))*(1+DATEDIFF(DAY, @StartDate, @EndDate)),@StartDate) AS 'SalesDate');
@@ -482,21 +482,6 @@ AFTER
     INSERT AS
 BEGIN
       SET NOCOUNT ON;
-
-      -- CREATE TABLE [sale] (
-      --       serialNo INT,
-      --       startDate DATE,
-      --       companyID INT
-      -- );
-
-      -- INSERT INTO [sale]     
-            -- SELECT 
-            --       INSERTED.SerialNo [serialNo],
-            --       INSERTED.ContractDate [startDate],
-            --       INSERTED.companyID [companyID]  
-            -- INTO [sale]
-            -- FROM INSERTED
-            
 
       -- Get EmployeeID
       DECLARE @employeeID INT = (SELECT TOP 1 emp.EmployeeID FROM Person.Employee emp WHERE emp.CompanyID = (SELECT companyID FROM INSERTED));
@@ -593,3 +578,4 @@ BEGIN
             )
 END
 GO
+

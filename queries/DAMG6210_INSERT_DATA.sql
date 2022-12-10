@@ -78,6 +78,13 @@ INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (1,1,'Ot
 INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (1,2,'Otis US: Southwest');
 INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (1,3,'Otis US: Southeast');
 INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (1,4,'Otis US: Northeast');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (2,5,'Otis UK: Northwest');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (2,6,'Otis UK: Southwest');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (2,7,'Otis UK: Southeast');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (2,8,'Otis UK: Northeast');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (3,9,'Otis IN: South');
+INSERT INTO Client.Company (OrganizationID,RegionID,CompanyName) VALUES (3,10,'Otis IN: North');
+
 
 
 ------------------------- ProductType ---------------------------
@@ -177,6 +184,8 @@ EXECUTE CreateCustomer @CustomerId=15,@CompanyId=3
 EXECUTE CreateCustomer @CustomerId=16,@CompanyId=3
 EXECUTE CreateCustomer @CustomerId=17,@CompanyId=4
 EXECUTE CreateCustomer @CustomerId=18,@CompanyId=4
+EXECUTE CreateCustomer @CustomerId=19,@CompanyId=4
+EXECUTE CreateCustomer @CustomerId=20,@CompanyId=4
 
 ----------------------- UserDetails --------------------------
 INSERT INTO Person.UserDetails (LoginId, EncryptedPassword,PersonId ) VALUES ('kinjalthakkar14' , EncryptByKey(Key_GUID(N'PasswordSymmetricKey'), convert(varbinary, 'PassTS1')),4);
@@ -220,12 +229,18 @@ END
 -------------------------- Callback ------------------------
 
 SET @Counter=1
-WHILE ( @Counter <= 1000)
+WHILE ( @Counter <= 100)
 BEGIN
     DECLARE @serialNo INT = (SELECT TOP 1 SerialNo FROM Contract.Unit ORDER BY NEWID());
-    EXECUTE RegisterCallbackRandomizer @serialNo
+    DECLARE @serialCounter INT = 1
+    WHILE (@serialCounter <= 15)
+    BEGIN
+        EXECUTE RegisterCallbackRandomizer @serialNo
+        SET @serialCounter = @serialCounter + 1;
+    END
     SET @Counter = @Counter + 1;
 END
+
 
 SET @Counter=1
 WHILE ( @Counter <= 200)
@@ -272,3 +287,5 @@ BEGIN
     EXECUTE CreateRegionRandomizer
     SET @Counter = @Counter + 1;
 END
+
+SELECT * FROM YearlyCallBackPerSerial10
