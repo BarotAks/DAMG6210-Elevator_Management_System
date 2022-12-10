@@ -186,7 +186,7 @@ CREATE TABLE Person.Person (
     PhoneNumber CHAR(12), -- you might not want to have such a precise length
     CONSTRAINT chk_phone CHECK (PhoneNumber NOT LIKE '%[^0-9+-.]%'),
     DateofBirth Date,
-    AGE AS DATEDIFF(hour,DateOfBirth,GETDATE())/8766,
+    AGE AS dbo.GetAge(DateOfBirth),
     EmailAddress VARCHAR(200),
     GenderID INT FOREIGN KEY REFERENCES Person.Gender(GenderID)
 );
