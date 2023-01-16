@@ -19,6 +19,12 @@ SELECT COUNT(*) AS [Route] FROM Territory.Route
 SELECT COUNT(*) AS [Territory] FROM Territory.Territory
 SELECT COUNT(*) AS [Region] FROM Territory.Region
 SELECT COUNT(*) AS [Country] FROM Territory.Country
+-- SELECT * FROM SalesPerYearProduct
+-- SELECT * FROM MaintenanceVisitsperYear
+-- SELECT * FROM Top3ProductsperYear
+-- SELECT * FROM YearlyCallBackPerSerial10
+-- SELECT * FROM YearlyCallbacksPerRoute
+-- SELECT * FROM YearlycompanysalesperRep
 
 
 

@@ -24,23 +24,7 @@ OPEN SYMMETRIC KEY PasswordSymmetricKey
 DECRYPTION BY CERTIFICATE PasswordCertificate;
 
 
---Testing purpose for future reference
--- Start
-INSERT
-INTO Person.UserDetails
-(
-LoginId,
-EncryptedPassword,
-PersonId 
-)
-VALUES
-('User 1' , EncryptByKey(Key_GUID(N'PasswordSymmetricKeyTeam'), convert(varbinary, 
-'PassTS1')),1);
-
-SELECT * FROM Person.UserDetails;
--- Select * from Person.UserDetails;
-
--- -- Use DecryptByKey to decrypt the encrypted data and see what we have in the table
+-- Use DecryptByKey to decrypt the encrypted data and see what we have in the table
 -- select LoginId, DecryptByKey(EncryptedPassword)
 -- from Person.UserDetails;
 

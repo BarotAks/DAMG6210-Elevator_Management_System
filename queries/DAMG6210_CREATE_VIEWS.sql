@@ -53,11 +53,50 @@ GO
 
 ---------------------------------- VIEW: MaintenanceVisitsperYear --------------------------------------
 
+GO
 CREATE VIEW MaintenanceVisitsperYear as
-SELECT maintenance.EmployeeID,person.FirstName+' ' + person.LastName AS 'PersonName',YEAR(maintenance.VisitDate) VisitYear,callstatus.StatusType,Count(JobID) Visits
-FROM Callback.MaintenanceJobs maintenance
-INNER JOIN Callback.Status callstatus ON callstatus.StatusID=maintenance.JobStatus
-INNER JOIN Person.Employee emp ON emp.EmployeeId=maintenance.EmployeeID
-INNER JOIN Person.Person person ON person.PersonId=emp.EmployeeId
-GROUP BY maintenance.EmployeeID,callstatus.StatusType,YEAR(maintenance.VisitDate),person.FirstName,person.LastName
+    SELECT *
+    FROM (
+    SELECT person.FirstName+' ' + person.LastName AS 'PersonName',YEAR(maintenance.VisitDate) VisitYear,callstatus.StatusType,JobID
+    FROM Callback.MaintenanceJobs maintenance
+    INNER JOIN Callback.Status callstatus ON callstatus.StatusID=maintenance.JobStatus
+    INNER JOIN Person.Employee emp ON emp.EmployeeId=maintenance.EmployeeID
+    INNER JOIN Person.Person person ON person.PersonId=emp.EmployeeId
+    ) src
+    PIVOT (
+    COUNT(JobID)
+    FOR src.StatusType IN (Active,Completed,Cancelled)
+    )piv
+GO
 
+---------------------------------- VIEW: YearlyCallbacksPerRoute --------------------------------------
+GO
+CREATE VIEW YearlyCallbacksPerRoute AS
+    SELECT *
+    FROM(
+    SELECT Year(callback.CallbackDate) CallBackYear,terroute.RouteName,callstatus.StatusType,callback.CallbackID
+    FROM Callback.Callback callback
+    INNER JOIN Callback.Status callstatus ON callstatus.StatusID=callback.StatusID
+    INNER JOIN Territory.Route terroute ON terroute.RouteID=callback.RouteID
+    )src
+    PIVOT(
+    COUNT(CallbackID)
+    FOR src.StatusType IN (Active,Completed,Closed,Cancelled)
+    )piv
+GO
+
+---------------------------------- VIEW: YearlyCallBackPerSerial10 --------------------------------------
+
+GO
+CREATE VIEW YearlyCallBackPerSerial10 as
+    SELECT * FROM (
+    SELECT Year(callback.CallbackDate) CallBackYear,callback.SerialNumber,callback.CallbackID,callstatus.StatusType
+    FROM Callback.Callback callback
+    INNER JOIN Callback.Status callstatus ON callstatus.StatusID=callback.StatusID
+    ) src
+    PIVOT (
+    Count(CallbackID)
+    FOR src.StatusType IN (Active,Completed,Closed)
+    )piv
+    WHERE Active+Closed>=10
+GO
